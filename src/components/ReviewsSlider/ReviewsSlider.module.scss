@@ -1,0 +1,60 @@
+@use "sass:math";
+
+@function rem($px) {
+  $result: math.div($px, 16)+rem;
+  @return $result;
+}
+
+.reviews {
+  margin-bottom: rem(20);
+
+  &__slide {
+    max-width: rem(310);
+  }
+
+  &__item {
+    padding: rem(15);
+    background-color: #1B203D;
+    border-radius: rem(20);
+    margin-bottom: rem(5);
+  }
+
+  &__userName {
+    color: #6D9FFF;
+    font-size: rem(13);
+    line-height: math.div(20, 13);
+
+    &:not(:last-child) {
+      margin-bottom: rem(5);
+    }
+
+    span {
+      font-weight: 700;
+    }
+  }
+
+  &__text {
+    font-size: rem(15);
+    line-height: math.div(22, 15);
+    color: #EFF0F7;
+    font-weight: 400;
+  }
+
+  &__count {
+    background-color: #1B203D;
+    width: 100%;
+    text-align: center;
+    padding: rem(5) rem(30);
+    border-radius: rem(20);
+
+    p {
+      font-size: rem(13);
+      line-height: math.div(20, 13);
+      color: #FCFCFC;
+
+      span {
+        color: #A0A3BD;
+      }
+    }
+  }
+}

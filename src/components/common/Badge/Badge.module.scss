@@ -1,0 +1,23 @@
+@use "sass:math";
+
+@function rem($px) {
+  $result: math.div($px, 16)+rem;
+  @return $result;
+}
+
+.badge {
+  background: #1954C5;
+  border-radius: 0px 20px 20px 0px;
+  padding: rem(3) rem(26) rem(3) rem(23);
+  margin: 0px 0px 0px -20px;
+  display: inline-block;
+  // position: absolute;
+  // left: 0;
+
+  &__text {
+    color: #EFF0F7;
+    font-weight: 700;
+    font-size: rem(13);
+    line-height: math.div(20, 13);
+  }
+}

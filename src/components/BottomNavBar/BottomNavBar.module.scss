@@ -1,0 +1,36 @@
+@use "sass:math";
+
+@function rem($px) {
+  $result: math.div($px, 16)+rem;
+  @return $result;
+}
+
+.bottomNavBar {
+  position: fixed;
+  z-index: 5;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #14142B;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+
+  &__body {
+    display: flex;
+    min-height: rem(60);
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px rem(30) rem(16);
+  }
+
+  &__link {
+    font-size: rem(20);
+
+    &::before {
+      font-weight: bold;
+    }
+
+    &_active {
+      background: linear-gradient(114.44deg, #624AF2 0%, #50DDC3 100%);
+    }
+  }
+}

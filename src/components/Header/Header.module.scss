@@ -1,0 +1,78 @@
+@use "sass:math";
+
+@function rem($px) {
+  $result: math.div($px, 16)+rem;
+  @return $result;
+}
+
+.header {
+  padding: rem(20) 0px;
+  margin: 0px 0px rem(25) 0px;
+  border-bottom: #1A1B37;
+  box-shadow: 0px 0.5px 0px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+
+  &_channel {
+    background-color: #1A1B37;
+  }
+
+  &__container {}
+
+  &__body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: rem(10);
+  }
+
+  &__button {
+    display: block;
+    font-size: rem(17);
+    line-height: math.div(22, 17);
+    font-family: 'SF Pro Text';
+    transition: color 0.3s ease 0s;
+    color: #EFF0F7;
+    flex: 0 1 rem(125);
+    text-align: left;
+
+    &_icon {
+      font-size: rem(24);
+      color: #14142B;
+      text-align: right;
+    }
+
+    &_text {
+      font-size: rem(17);
+      color: #EFF0F7;
+      text-align: right;
+
+      &Active {
+        background: linear-gradient(114.44deg, #624AF2 0%, #50DDC3 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        color: #1954C5;
+      }
+    }
+  }
+
+  &__logo {
+    font-weight: 600;
+    font-family: 'SF Pro Text';
+    font-size: rem(17);
+    line-height: math.div(22, 17);
+    color: #1954C5;
+    letter-spacing: rem(-0.4);
+    transition: color 0.3s ease 0s;
+
+    @media (any-hover: hover) {
+      &:hover {
+        color: #EFF0F7;
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@use "sass:math";
+
+@function rem($px) {
+  $result: math.div($px, 16)+rem;
+  @return $result;
+}
+
+.channels {
+  &__badge {
+    margin: 0px 0px rem(25) 0px;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: rem(15);
+    padding: rem(20) 0px 0px 0px;
+
+
+    >* {
+      flex: 1 1 auto;
+
+      &:last-child {
+        margin: 0px 0px rem(15) 0px;
+      }
+    }
+  }
+}

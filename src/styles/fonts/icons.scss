@@ -1,0 +1,41 @@
+%ic {
+  font-family: "icons";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class*="_icon-"] {
+  &:before {
+    @extend %ic;
+    display: block;
+  }
+}
+
+._icon-menu:before {
+  content: "\e900";
+}
+
+._icon-bookmark:before {
+  content: "\e901";
+}
+
+._icon-success:before {
+  content: "\e902";
+}
+
+._icon-profile:before {
+  content: "\e903";
+}
+
+._icon-arrow-right:before {
+  content: "\e904";
+}
+
+._icon-home:before {
+  content: "\e905";
+}

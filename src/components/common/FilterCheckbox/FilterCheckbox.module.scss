@@ -1,0 +1,54 @@
+@use "sass:math";
+
+@function rem($px) {
+  $result: math.div($px, 16)+rem;
+  @return $result;
+}
+
+.checkbox {
+  background-color: #1B203D;
+  border-radius: rem(20);
+  padding: rem(10) rem(25);
+
+  &__input {
+    display: none;
+
+    &:checked+.checkbox__content .checkbox__indicator {
+      background-color: #1954C5;
+
+      span {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__text {
+    color: #FCFCFC;
+    font-weight: 600;
+    font-size: rem(15);
+    line-height: math.div(22, 15);
+  }
+
+  &__indicator {
+    flex: 0 0 rem(28);
+    height: rem(28);
+    background-color: #262B4B;
+    border-radius: 50%;
+    transition: background-color 0.2s ease 0s;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+      font-size: rem(14);
+      opacity: 0;
+      transition: opacity 0.2s ease 0s;
+    }
+  }
+}

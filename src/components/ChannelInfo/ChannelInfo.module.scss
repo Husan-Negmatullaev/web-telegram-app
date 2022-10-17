@@ -1,0 +1,78 @@
+@use "sass:math";
+
+@function rem($px) {
+  $result: math.div($px, 16)+rem;
+  @return $result;
+}
+
+.channel {
+  &Content {
+    margin-bottom: rem(40);
+
+    &__body {}
+
+    &__actions {
+      margin-bottom: rem(20);
+      display: flex;
+      align-items: center;
+      gap: rem(15);
+    }
+
+    &__action {
+      flex: 0 1 50%;
+      padding: rem(10);
+      text-align: center;
+      border: 1px solid #4E4B66;
+      border-radius: rem(20);
+      color: #FCFCFC;
+    }
+
+    &__label {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      justify-content: center;
+      gap: rem(10);
+
+      &::before {
+        font-size: rem(14);
+        color: #6D9FFF;
+      }
+    }
+
+    &__content {
+      display: flex;
+      align-items: center;
+      gap: rem(10);
+    }
+
+    &__data {
+      flex: 0 1 33.333%;
+      position: relative;
+      border: 1px solid #4E4B66;
+      border-radius: 20px;
+    }
+
+    &__placeholder {
+      color: #A0A3BD;
+      font-size: rem(13);
+      line-height: math.div(20, 13);
+      display: block;
+      background-color: #0F1029;
+      padding: 0 rem(4);
+      position: absolute;
+      top: -10px;
+      left: 3px;
+    }
+
+    &__text {
+      text-align: center;
+      padding: rem(8);
+
+      color: #FFFFFF;
+      font-weight: 600;
+      font-size: rem(15);
+      line-height: math.div(22, 15);
+    }
+  }
+}

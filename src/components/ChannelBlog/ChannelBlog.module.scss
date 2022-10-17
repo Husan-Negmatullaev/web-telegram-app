@@ -1,0 +1,84 @@
+@use "sass:math";
+
+@function rem($px) {
+  $result: math.div($px, 16)+rem;
+  @return $result;
+}
+
+.channelBlog {
+  text-align: left;
+  display: flex;
+  align-items: center;
+  background: #1B203D;
+  border-radius: 20px;
+  overflow: hidden;
+  gap: rem(12);
+
+  &__image {
+    align-self: start;
+
+    img {
+      // overflow: hidden;
+      border-radius: 0 0 20px 0;
+    }
+  }
+
+  &__content {
+    flex: 1 1 auto;
+    padding: rem(8) 0px;
+  }
+
+  &__subscribers {
+    display: inline-flex;
+    align-items: center;
+    gap: rem(5);
+    font-size: rem(13);
+    line-height: math.div(19.5, 13);
+    color: #EFF0F6;
+
+    &::after {
+      color: #EFF0F6;
+      font-size: rem(14);
+    }
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: rem(15);
+    line-height: math.div(22.5, 15);
+    color: #EFF0F6;
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+  }
+
+  &__text {
+    p {
+      font-size: rem(13);
+      line-height: math.div(20, 13);
+      color: #A0A3BD;
+
+      display: block;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      -o-text-overflow: ellipsis;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-self: stretch;
+    align-items: center;
+    padding: 0px rem(6);
+    background-color: #161A35;
+    font-size: rem(11);
+    color: #A0A3BD;
+  }
+}

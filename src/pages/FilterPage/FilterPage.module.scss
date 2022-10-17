@@ -1,0 +1,27 @@
+@use "sass:math";
+
+@function rem($px) {
+  $result: math.div($px, 16)+rem;
+  @return $result;
+}
+
+.filterPage {
+
+  &__header {
+    margin-bottom: rem(20);
+  }
+}
+
+.filterPageForm {
+  padding-bottom: rem(40);
+
+  &__body {
+    display: flex;
+    gap: rem(20);
+    flex-direction: column;
+
+    >* {
+      flex: 1 1 auto;
+    }
+  }
+}

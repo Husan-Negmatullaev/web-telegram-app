@@ -1,0 +1,20 @@
+@use "sass:math";
+
+@function rem($px) {
+  $result: math.div($px, 16)+rem;
+  @return $result;
+}
+
+.listChannel {
+
+  &__container {
+    position: relative;
+    padding: 0 1.25rem rem(60) !important;
+  }
+
+  &__title {
+    margin: 0px 0px rem(15) 0px;
+  }
+
+  &__body {}
+}

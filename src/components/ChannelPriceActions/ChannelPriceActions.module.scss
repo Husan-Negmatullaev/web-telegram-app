@@ -1,0 +1,76 @@
+@use "sass:math";
+
+@function rem($px) {
+  $result: math.div($px, 16)+rem;
+  @return $result;
+}
+
+.channel {
+  &Price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: rem(20);
+    margin: 0px 0px rem(30) 0px;
+
+    &__content {
+      flex: 0 1 70%;
+    }
+
+    &__title {
+      font-weight: 600;
+      font-size: rem(17);
+      line-height: math.div(25.5, 17);
+      color: #FCFCFC;
+    }
+
+    &__text {
+      font-size: rem(13);
+      line-height: math.div(20, 13);
+      color: #A0A3BD;
+    }
+
+    &__price {
+      flex: 0 1 20%;
+
+      span {
+        padding: rem(10) rem(26);
+        font-size: rem(15);
+        font-weight: 600;
+        line-height: math.div(25.5, 15);
+        text-align: center;
+        color: #fff;
+        background-color: #1B203D;
+        border-radius: rem(20);
+        white-space: nowrap;
+      }
+    }
+  }
+
+  &Actions {
+    &__body {
+      display: flex;
+      align-items: center;
+      gap: rem(12);
+    }
+
+    &__button {
+      flex: 1 1 50%;
+      font-size: rem(15);
+      line-height: math.div(22, 15);
+      color: #FCFCFC;
+
+      span {
+        background:
+          linear-gradient(#0F1029 0 0) padding-box,
+          /*this is your grey background*/
+          linear-gradient(to right, #624AF2, #50DDC3) border-box;
+        border: 2px solid transparent;
+        border-radius: rem(20);
+        display: inline-block;
+        display: block;
+        padding: rem(8) rem(10);
+      }
+    }
+  }
+}

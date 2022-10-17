@@ -1,0 +1,13 @@
+@use "sass:math";
+
+@function rem($px) {
+  $result: math.div($px, 16)+rem;
+  @return $result;
+}
+
+.title {
+  font-size: rem(15);
+  font-weight: 600;
+  line-height: math.div(22.5, 15);
+  color: #A0A3BD;
+}

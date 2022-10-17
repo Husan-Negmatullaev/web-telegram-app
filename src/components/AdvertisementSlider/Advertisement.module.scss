@@ -1,0 +1,83 @@
+@use "sass:math";
+
+@function rem($px) {
+  $result: math.div($px, 16)+rem;
+  @return $result;
+}
+
+.advertisement {
+  margin-bottom: rem(20);
+
+  &__swiper {}
+
+  &__slide {
+    max-width: rem(310);
+  }
+
+  &__item {
+    background-color: #1B203D;
+    border-radius: 20px;
+    padding: rem(15);
+    margin-bottom: rem(5);
+  }
+
+  &__logo {
+    margin-bottom: rem(10);
+  }
+
+  &__title {
+    margin-bottom: rem(5);
+    color: #6D9FFF;
+    font-weight: 700;
+    font-size: rem(13);
+    line-height: math.div(20, 13);
+  }
+
+  &__text {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    color: #EFF0F7;
+    font-size: rem(15);
+    line-height: math.div(22, 15);
+    margin-bottom: rem(10);
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    font-size: rem(13);
+    color: #FCFCFC;
+    line-height: math.div(20, 13);
+
+    span {
+      background: linear-gradient(#1B203D 0 0) padding-box, linear-gradient(to right, #624AF2, #50DDC3) border-box;
+      border: 2px solid transparent;
+      border-radius: 1.25rem;
+      display: block;
+      padding: 0.5rem 0.625rem;
+      padding: rem(7) rem(25);
+    }
+  }
+
+  &__count {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: rem(5);
+    padding: rem(5) rem(25);
+    background-color: #1B203D;
+    border-radius: rem(20);
+    color: #FFFFFF;
+    font-size: rem(13);
+    line-height: math.div(20, 13);
+
+    span {
+      color: #A0A3BD;
+    }
+  }
+}
