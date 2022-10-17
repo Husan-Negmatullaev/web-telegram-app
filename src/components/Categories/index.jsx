@@ -2,8 +2,8 @@ import SimpleBar from 'simplebar-react';
 import clsx from "clsx"
 
 import Container from '../common/Container';
-import 'simplebar-react/dist/simplebar.min.css';
 import styles from "./Categories.module.scss"
+import 'simplebar-react/dist/simplebar.min.css';
 
 const Categories = () => {
   return (

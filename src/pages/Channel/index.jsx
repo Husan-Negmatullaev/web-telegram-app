@@ -1,5 +1,6 @@
 import React from 'react';
 import clsx from "clsx";
+import SimpleBar from 'simplebar-react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 import Badge from "../../components/common/Badge/Index";
@@ -12,8 +13,9 @@ import ReviewsSlider from '../../components/ReviewsSlider';
 import AdvertisementSlider from '../../components/AdvertisementSlider';
 
 import styles from "./Channel.module.scss";
-import img from "../../assets/img/01.png";
 import SameChannelSlider from '../../components/SameChannelSlider';
+import img from "../../assets/img/01.png";
+import 'simplebar-react/dist/simplebar.min.css';
 
 const Channel = () => {
 
@@ -65,20 +67,22 @@ const Channel = () => {
             <Tabs>
               <Container classes={styles.channelSwiper__container}>
                 <div className={styles.channelSwiperTabs}>
-                  <TabList className={styles.channelSwiperTabs__list}>
-                    <Tab className={styles.channelSwiperTabs__item} selectedClassName={styles.channelSwiperTabs__item_active}>
-                      Пол
-                    </Tab>
-                    <Tab className={styles.channelSwiperTabs__item} selectedClassName={styles.channelSwiperTabs__item_active}>
-                      Гео
-                    </Tab>
-                    <Tab className={styles.channelSwiperTabs__item} selectedClassName={styles.channelSwiperTabs__item_active}>
-                      Отзывы
-                    </Tab>
-                    <Tab className={styles.channelSwiperTabs__item} selectedClassName={styles.channelSwiperTabs__item_active}>
-                      Примеры рекламы
-                    </Tab>
-                  </TabList>
+                  <SimpleBar style={{ maxWidth: 768 }}>
+                    <TabList className={styles.channelSwiperTabs__list}>
+                      <Tab className={styles.channelSwiperTabs__item} selectedClassName={styles.channelSwiperTabs__item_active}>
+                        Пол
+                      </Tab>
+                      <Tab className={styles.channelSwiperTabs__item} selectedClassName={styles.channelSwiperTabs__item_active}>
+                        Гео
+                      </Tab>
+                      <Tab className={styles.channelSwiperTabs__item} selectedClassName={styles.channelSwiperTabs__item_active}>
+                        Отзывы
+                      </Tab>
+                      <Tab className={styles.channelSwiperTabs__item} selectedClassName={styles.channelSwiperTabs__item_active}>
+                        Примеры рекламы
+                      </Tab>
+                    </TabList>
+                  </SimpleBar>
                 </div>
               </Container>
               <div className={styles.channelSwiperSlider}>
