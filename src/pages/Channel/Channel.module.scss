@@ -125,6 +125,12 @@
   }
 
   &Swiper {
+    &__container {
+      @media (max-width: 768.98px) {
+        padding: 0px !important;
+      }
+    }
+
     &Tabs {
       margin-bottom: rem(25);
 
@@ -136,7 +142,6 @@
       }
 
       &__item {
-        // min-width: rem(100);
         text-align: center;
         white-space: nowrap;
         padding: 0px rem(28) rem(7);

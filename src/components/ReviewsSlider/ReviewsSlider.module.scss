@@ -10,6 +10,14 @@
 
   &__slide {
     max-width: rem(310);
+
+    @media (max-width: 374.98px) {
+      max-width: rem(290);
+    }
+
+    @media (max-width: 349.98px) {
+      max-width: rem(250);
+    }
   }
 
   &__item {

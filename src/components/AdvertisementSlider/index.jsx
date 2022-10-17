@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -27,9 +28,9 @@ const AdvertisementSlider = () => {
                   </div>
                   <h3 className={styles.advertisement__title}>{obj.title}</h3>
                   <p className={styles.advertisement__text}>{obj.text}</p>
-                  <button type="button" class={styles.advertisement__link}>
+                  <Link to={`/posts/${index + 1}`} className={styles.advertisement__link}>
                     <span>Смотреть полностью</span>
-                  </button>
+                  </Link>
                 </div>
                 <div className={styles.advertisement__count}>
                   {index + 1} <span>из {advertisement.length}</span>

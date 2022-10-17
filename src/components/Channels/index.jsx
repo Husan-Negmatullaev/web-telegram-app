@@ -18,7 +18,7 @@ const Channels = ({ title, data }) => {
             return (
               <Link
                 key={obj.id}
-                to={`/posts/post/${obj.id}`}
+                to={`/posts/channel/${obj.id}`}
               >
                 <ChannelBlog
                   subscribers={obj.subscribers}

@@ -63,22 +63,24 @@ const Channel = () => {
           </div>
           <div className={styles.channelSwiper}>
             <Tabs>
-              <div className={styles.channelSwiperTabs}>
-                <TabList className={styles.channelSwiperTabs__list}>
-                  <Tab className={styles.channelSwiperTabs__item} selectedClassName={styles.channelSwiperTabs__item_active}>
-                    Пол
-                  </Tab>
-                  <Tab className={styles.channelSwiperTabs__item} selectedClassName={styles.channelSwiperTabs__item_active}>
-                    Гео
-                  </Tab>
-                  <Tab className={styles.channelSwiperTabs__item} selectedClassName={styles.channelSwiperTabs__item_active}>
-                    Отзывы
-                  </Tab>
-                  <Tab className={styles.channelSwiperTabs__item} selectedClassName={styles.channelSwiperTabs__item_active}>
-                    Примеры рекламы
-                  </Tab>
-                </TabList>
-              </div>
+              <Container classes={styles.channelSwiper__container}>
+                <div className={styles.channelSwiperTabs}>
+                  <TabList className={styles.channelSwiperTabs__list}>
+                    <Tab className={styles.channelSwiperTabs__item} selectedClassName={styles.channelSwiperTabs__item_active}>
+                      Пол
+                    </Tab>
+                    <Tab className={styles.channelSwiperTabs__item} selectedClassName={styles.channelSwiperTabs__item_active}>
+                      Гео
+                    </Tab>
+                    <Tab className={styles.channelSwiperTabs__item} selectedClassName={styles.channelSwiperTabs__item_active}>
+                      Отзывы
+                    </Tab>
+                    <Tab className={styles.channelSwiperTabs__item} selectedClassName={styles.channelSwiperTabs__item_active}>
+                      Примеры рекламы
+                    </Tab>
+                  </TabList>
+                </div>
+              </Container>
               <div className={styles.channelSwiperSlider}>
                 <Container>
                   <TabPanel>

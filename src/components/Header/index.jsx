@@ -8,17 +8,18 @@ import Container from '../common/Container';
 const Header = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  const { postId } = useParams();
-  const isPostPage = pathname === `/posts/post/${postId}`;
+  const { channelId, postId } = useParams();
+  const isChannelPage = pathname === `/posts/channel/${channelId}`;
+  const isPostPage = pathname === `/posts/${postId}`;
   const isFilterPage = pathname === "/posts/filter";
-  const isGoBack = !(pathname === "/posts/filter" || isPostPage);
+  const isGoBack = !(pathname === "/posts/filter" || isChannelPage || isPostPage);
 
   const goBack = () => {
     navigate(-1);
   }
 
   return (
-    <div className={clsx(styles.header, { "Header_header_channel__nmLEA": isPostPage })}>
+    <div className={clsx(styles.header, { [styles.header_channel]: isChannelPage })}>
       <Container classes={styles.header__container}>
         <div className={styles.header__body}>
           <button type="button" className={styles.header__button} disabled={isGoBack} onClick={goBack}>

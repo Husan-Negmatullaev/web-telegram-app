@@ -14,10 +14,10 @@ const ChannelPriceActions = () => {
       </div>
       <div className={styles.channelActions}>
         <div className={styles.channelActions__body}>
-          <button type="button" class={styles.channelActions__button}>
+          <button type="button" className={styles.channelActions__button}>
             <span>Связаться</span>
           </button>
-          <button type="button" class={styles.channelActions__button}>
+          <button type="button" className={styles.channelActions__button}>
             <span>Поторговаться</span>
           </button>
         </div>

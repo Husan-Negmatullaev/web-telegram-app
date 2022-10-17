@@ -7,6 +7,7 @@ import Channel from "./pages/Channel";
 import MainLayout from "./layouts/MainLayout";
 import HeaderLayout from "./layouts/HeaderLayout/indes";
 import "./styles/index.scss"
+import Post from "./pages/Post";
 
 function App() {
   return (
@@ -17,8 +18,9 @@ function App() {
           <Route path="favoruites" element={<Favourites />} />
         </Route>
         <Route path="/posts/" element={<HeaderLayout />}>
+          <Route path=":postId" element={<Post />} />
           <Route path="filter" element={<FilterPage />} />
-          <Route path="post/:postId" element={<Channel />} />
+          <Route path="channel/:channelId" element={<Channel />} />
         </Route>
       </Routes>
     </div>
