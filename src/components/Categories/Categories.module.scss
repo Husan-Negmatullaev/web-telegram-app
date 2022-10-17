@@ -17,6 +17,10 @@
     display: flex;
     align-items: center;
     gap: rem(10);
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   &__item {
