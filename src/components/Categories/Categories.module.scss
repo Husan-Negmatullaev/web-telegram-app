@@ -19,7 +19,8 @@
     gap: rem(10);
 
     &::-webkit-scrollbar {
-      width: rem(10);
+      width: rem(5);
+      height: rem(5);
     }
 
     &::-webkit-scrollbar-track {
