@@ -10,18 +10,24 @@
   &__header {
     margin-bottom: rem(20);
   }
-}
 
-.filterPageForm {
-  padding-bottom: rem(40);
+  &Form {
+    padding: 0px 0px rem(35) 0px;
 
-  &__body {
-    display: flex;
-    gap: rem(20);
-    flex-direction: column;
+    &__body {
+      padding-bottom: rem(40);
 
-    >* {
-      flex: 1 1 auto;
+      display: flex;
+      gap: rem(20);
+      flex-direction: column;
+
+      >* {
+        flex: 1 1 auto;
+      }
+    }
+
+    &__button {
+      width: 100%;
     }
   }
 }

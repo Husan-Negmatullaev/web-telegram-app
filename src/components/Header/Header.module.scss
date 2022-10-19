@@ -25,8 +25,12 @@
     gap: rem(10);
   }
 
+  &__menu {
+    flex: 0 1 rem(125);
+    text-align: right;
+  }
+
   &__button {
-    display: block;
     font-size: rem(17);
     line-height: math.div(22, 17);
     font-family: 'SF Pro Text';

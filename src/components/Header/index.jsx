@@ -28,12 +28,14 @@ const Header = () => {
           <Link to="/" className={styles.header__logo}>
             Name
           </Link>
-          {
-            isFilterPage ?
-              <button type="button" className={clsx(styles.header__button, styles.header__button_text, { [styles.header__button_textActive]: true })}>Сбросить</button>
-              :
-              <button type="button" className={clsx(styles.header__button, styles.header__button_icon, "_icon-menu")} />
-          }
+          <div className={styles.header__menu}>
+            {isFilterPage || <button
+              type="button"
+              className={
+                clsx(styles.header__button_icon, "_icon-menu")
+              }
+            />}
+          </div>
         </div>
       </Container>
     </div>

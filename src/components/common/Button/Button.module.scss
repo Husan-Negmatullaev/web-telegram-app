@@ -1,0 +1,22 @@
+@use "sass:math";
+
+@function rem($px) {
+  $result: math.div($px, 16)+rem;
+  @return $result;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: rem(11.5) rem(40);
+  font-size: rem(17);
+  line-height: math.div(26, 17);
+  color: #FCFCFC;
+  background-color: #1954C5;
+  border-radius: rem(40);
+
+  &_fw {
+    width: 100%;
+  }
+}

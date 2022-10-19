@@ -1,10 +1,9 @@
-import React from 'react'
-
 import Container from '../../components/common/Container';
 import FilterCheckbox from '../../components/common/FilterCheckbox';
 import Title from '../../components/common/Title';
-import styles from "./FilterPage.module.scss";
+import { Button } from '../../components/common/Button';
 
+import styles from "./FilterPage.module.scss";
 import { filterList } from "../../mocks/filter-list"
 
 const FilterPage = () => {
@@ -27,6 +26,10 @@ const FilterPage = () => {
               })
             }
           </div>
+          <Button
+            text={"Применить"}
+            classes={styles.filterPageForm__button}
+          />
         </Container>
       </form>
     </div>
