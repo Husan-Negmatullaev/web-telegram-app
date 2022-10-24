@@ -6,7 +6,7 @@ import Header from "../../components/Header";
 const MainLayout = () => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <Outlet />
       <BottomNavBar />
     </>

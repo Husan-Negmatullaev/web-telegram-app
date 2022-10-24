@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 
-import Categories from '../../components/Categories';
+import Filter from '../../components/Filter';
 import Channels from '../../components/Channels';
 import Container from '../../components/common/Container';
 import Title from '../../components/common/Title';
@@ -13,7 +13,7 @@ const MainPage = () => {
   return (
     <div className={styles.mainPage}>
       <div className={styles.headerPage}>
-        <Container classes={styles.headerPage__container}>
+        <Container>
           <div className={styles.actionTitle}>
             <Title>Категории</Title>
             <Link
@@ -25,7 +25,7 @@ const MainPage = () => {
             </Link>
           </div>
         </Container>
-        <Categories />
+        <Filter />
       </div>
       <div className={styles.listChannel}>
         <Container classes={styles.listChannel__container}>

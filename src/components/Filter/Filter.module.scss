@@ -13,29 +13,17 @@
 
   &__list {
     padding: rem(5) rem(3);
-    // overflow: auto;
     display: flex;
     align-items: center;
     gap: rem(10);
-
-    // &::-webkit-scrollbar {
-    //   width: rem(5);
-    //   height: rem(5);
-    // }
-
-    // &::-webkit-scrollbar-track {
-    //   background-color: transparent;
-    //   border-radius: 0px;
-    // }
-
-    // &::-webkit-scrollbar-thumb {
-    //   background: #ccc;
-    //   border-radius: rem(20);
-    // }
   }
 
   &__item {
     display: block;
+
+    &:nth-child(1) .categories__button_active::after {
+      transform: scaleY(1.15) scaleX(1.05);
+    }
   }
 
   &__button {
@@ -67,10 +55,6 @@
       border-radius: rem(20);
     }
 
-    ._active & {
-      &::after {
-        transform: scaleX(1.1) scaleY(1.18);
-      }
-    }
+    &_active {}
   }
 }

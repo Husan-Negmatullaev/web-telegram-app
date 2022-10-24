@@ -40,3 +40,26 @@ export const filterList = [
     name: "medicine",
   },
 ];
+
+export const filterListBtn = [
+  {
+    id: 1,
+    label: "Все",
+    name: "filter"
+  },
+  {
+    id: 2,
+    label: "Дизайн",
+    name: "filter"
+  },
+  {
+    id: 3,
+    label: "Образование",
+    name: "filter"
+  },
+  {
+    id: 4,
+    label: "IT, Technology",
+    name: "filter"
+  },
+];
