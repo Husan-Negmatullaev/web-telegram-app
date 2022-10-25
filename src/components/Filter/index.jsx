@@ -1,10 +1,11 @@
 import React from "react";
 import SimpleBar from 'simplebar-react';
-import clsx from "clsx"
 
 import Container from '../common/Container';
-import styles from "./Filter.module.scss"
+import FilterItem from "../common/FilterItem";
+
 import 'simplebar-react/dist/simplebar.min.css';
+import styles from "./Filter.module.scss"
 import { filterListBtn } from "../../mocks/filter-list";
 
 const Filter = () => {
@@ -14,16 +15,9 @@ const Filter = () => {
         <SimpleBar style={{ maxWidth: 768 }}>
           <ul className={styles.categories__list}>
             {
-              filterListBtn.map((fitler) => {
+              filterListBtn.map((filter) => {
                 return (
-                  <li key={fitler.id} className={styles.categories__item}>
-                    <button
-                      type="button"
-                      className={clsx(styles.categories__button, styles.categories__button_active)}
-                    >
-                      <span>{fitler.label}</span>
-                    </button>
-                  </li>
+                  <FilterItem key={filter.id} filter={filter} />
                 )
               })
             }
