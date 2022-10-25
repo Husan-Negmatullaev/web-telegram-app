@@ -5,9 +5,31 @@
   @return $result;
 }
 
+.block {
+  display: flex;
+  align-items: center;
+}
+
 .title {
   font-size: rem(15);
   font-weight: 600;
   line-height: math.div(22.5, 15);
   color: #A0A3BD;
+  margin: 0 auto 0 0;
+
+  &:first-child {
+    margin: 0 auto;
+  }
+}
+
+.button {
+  margin-right: auto;
+  flex: 0 0 rem(30);
+  height: rem(30);
+  font-size: rem(12);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #4E4B66;
+  border-radius: 50%;
 }

@@ -6,7 +6,19 @@
 }
 
 .post {
-  margin-bottom: rem(30);
+  margin: rem(25) 0px rem(30) 0px;
+
+  &__backIcon {
+    width: rem(30);
+    height: rem(30);
+    font-size: rem(12);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #4E4B66;
+    border-radius: 50%;
+    margin-bottom: rem(20);
+  }
 
   &__image {
     position: relative;

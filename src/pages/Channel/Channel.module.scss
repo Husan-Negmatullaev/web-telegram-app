@@ -6,21 +6,23 @@
 }
 
 .channel {
+
   &Profile {
+    padding: rem(25) 0px rem(35) 0px;
+    margin: 0px 0px rem(25) 0px;
+
     position: relative;
 
     &::after {
       content: '';
       position: absolute;
-      top: rem(-25);
+      top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       background-color: #1A1B37;
       border-radius: 0 0 rem(40) rem(40);
     }
-
-    padding: 0px 0px rem(60) 0px;
 
     &__container {
       position: relative;
@@ -34,10 +36,26 @@
       margin-bottom: rem(23);
     }
 
+    &__actions {}
+
+    &__backIcon {
+      position: absolute;
+      top: 0;
+      left: rem(20);
+      width: rem(30);
+      height: rem(30);
+      font-size: rem(12);
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #4E4B66;
+      border-radius: 50%;
+    }
+
     &__badge {
       position: absolute;
       left: 0;
-      margin: 0;
+      margin: rem(50) 0px 0px 0px;
     }
 
     &__image {
@@ -129,16 +147,18 @@
       @media (max-width: 768.98px) {
         padding: 0px !important;
       }
+
+      border-bottom: 1px solid #4E4B66;
+      margin-bottom: rem(25);
+
     }
 
     &Tabs {
-      margin-bottom: rem(25);
 
       &__list {
         display: flex;
         align-items: center;
         // overflow: auto;
-        border-bottom: 1px solid #4E4B66;
       }
 
       &__item {

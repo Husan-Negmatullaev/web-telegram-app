@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import clsx from "clsx";
 import SimpleBar from 'simplebar-react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
@@ -18,17 +19,25 @@ import img from "../../assets/img/01.png";
 import 'simplebar-react/dist/simplebar.min.css';
 
 const Channel = () => {
+  const navigate = useNavigate();
+
+  const goBack = () => {
+    navigate(-1);
+  };
 
   return (
     <div className={styles.channel}>
-      <Tabs>
+      <Tabs className={styles.channel__tabs}>
         <div className={styles.channelProfile}>
           <Container classes={styles.channelProfile__container}>
             <div className={styles.channelProfile__header}>
-              <Badge
-                title={"Дизайн"}
-                classes={styles.channelProfile__badge}
-              />
+              <div className={styles.channelProfile__actions}>
+                <button onClick={goBack} type="button" className={clsx(styles.channelProfile__backIcon, "_icon-angle-left")} />
+                <Badge
+                  title={"Дизайн"}
+                  classes={styles.channelProfile__badge}
+                />
+              </div>
               <div className={styles.channelProfile__image}>
                 <img src={img} alt="" />
               </div>

@@ -1,12 +1,22 @@
+import { useNavigate } from "react-router-dom";
+import clsx from "clsx";
+
 import Container from "../../components/common/Container";
 
 import img from "../../assets/img/05.png"
 import styles from "./Post.module.scss";
 
 const Post = () => {
+  const navigate = useNavigate();
+
+  const goBack = () => {
+    navigate(-1);
+  };
+
   return (
     <div className={styles.post}>
       <Container>
+        <button onClick={goBack} type="button" className={clsx(styles.post__backIcon, "_icon-angle-left")} />
         <div className={styles.post__image}>
           <img src={img} alt="" />
         </div>
