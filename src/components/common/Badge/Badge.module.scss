@@ -11,6 +11,15 @@
   padding: rem(3) rem(26) rem(3) rem(23);
   margin: 0px 0px 0px -20px;
   display: inline-block;
+
+  @media (max-width: 479.98px) {
+    padding: rem(3) rem(18) rem(3) rem(18);
+  }
+
+  &_min {
+    max-width: rem(110);
+  }
+
   // position: absolute;
   // left: 0;
 

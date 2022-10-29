@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux/es/';
 import { fetchChannels } from '../../redux/slices/channels/asyncActions';
-import { fetchCategories } from '../../redux/slices/categories/asyncActions';
 import { selectChannels } from '../../redux/slices/channels/selectors';
 import { selectCategories } from '../../redux/slices/categories/selectors';
 
@@ -18,22 +17,30 @@ const MainPage = () => {
   const dispatch = useDispatch();
   const { channels, status } = useSelector(selectChannels);
   const { categoriesId } = useSelector(selectCategories);
+  const isFirstRender = React.useRef(false);
   const isSuccess = status === "success";
 
   React.useEffect(() => {
-    dispatch(fetchChannels());
+    if (channels.length === 0) {
+      dispatch(fetchChannels());
+    }
+    window.scrollTo(0, 0);
+
+    isFirstRender.current = true;
   }, [])
 
   React.useEffect(() => {
-    const params = new URLSearchParams();
+    if (channels.length > 0 && isFirstRender.current) {
+      const params = new URLSearchParams();
 
-    categoriesId.forEach(category => {
-      if (category) {
-        params.append("filter", category);
-      }
-    });
+      categoriesId.forEach(category => {
+        if (category) {
+          params.append("filter", category);
+        }
+      });
 
-    dispatch(fetchChannels(params));
+      dispatch(fetchChannels(params));
+    };
   }, [categoriesId])
 
   return (

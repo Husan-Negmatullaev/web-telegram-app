@@ -1,28 +1,28 @@
 import React from "react";
 import clsx from "clsx";
+import { useDispatch } from "react-redux/es/exports";
+import { addCategoryId } from "../../../redux/slices/categories/slice";
+
 import styles from "./FilterCheckbox.module.scss";
 
-const FilterCheckbox = ({ label }) => {
-  const id = React.useId();
-  const [isShake, setIsShake] = React.useState(false);
-  const animateRef = React.useRef(null);
+const FilterCheckbox = ({ label, idCategory, categoriesId }) => {
+  const dispatch = useDispatch();
 
-  const animate = () => {
-    setIsShake(true);
+  const formId = React.useId();
+  const inputRef = React.useRef(null);
 
-    animateRef.current = setTimeout(() => setIsShake(false), 500);
+  const handleClick = () => {
+    dispatch(addCategoryId(idCategory));
   };
 
   React.useEffect(() => {
-    return () => {
-      clearTimeout(animateRef.current);
-    };
-  }, [])
+    inputRef.current.checked = categoriesId.includes(idCategory);
+  }, []);
 
   return (
-    <label onClick={animate} htmlFor={id} className={clsx(styles.checkbox, { [styles.checkbox_shake]: isShake })}>
-      <input className={styles.checkbox__input} type="checkbox" id={id} name="react" />
-      <div className={styles.checkbox__content}>
+    <label className={clsx(styles.checkbox)}>
+      <input ref={inputRef} className={styles.checkbox__input} type="checkbox" id={formId} name="react" />
+      <div onClick={handleClick} className={styles.checkbox__content}>
         <p className={styles.checkbox__text}>{label}</p>
         <div className={styles.checkbox__indicator}>
           <span className="_icon-success"></span>
@@ -30,6 +30,6 @@ const FilterCheckbox = ({ label }) => {
       </div>
     </label>
   )
-}
+};
 
 export default FilterCheckbox;

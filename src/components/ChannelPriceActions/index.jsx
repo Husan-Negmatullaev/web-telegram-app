@@ -1,6 +1,23 @@
+import { getDigFormat } from "../../helpers/functions";
+import { ButtonTelLink } from "../common/Button";
+
 import styles from "./ChannelPriceActions.module.scss";
 
-const ChannelPriceActions = () => {
+const ChannelPriceActions = ({ price, contactNetwork, contactSales }) => {
+  const isLinks = Boolean(contactNetwork && contactSales);
+  const findLink = contactNetwork || contactSales;
+
+  const TelegramLinks = () => {
+    return <>
+      <ButtonTelLink link={contactNetwork} classes={styles.channelActions__button}>
+        <span>Связаться</span>
+      </ButtonTelLink>
+      <ButtonTelLink link={contactSales} classes={styles.channelActions__button}>
+        <span>Поторговаться</span>
+      </ButtonTelLink>
+    </>
+  }
+
   return (
     <div className={styles.channel}>
       <div className={styles.channelPrice}>
@@ -9,17 +26,19 @@ const ChannelPriceActions = () => {
           <p className={styles.channelPrice__text}>за один рекламный пост</p>
         </div>
         <div className={styles.channelPrice__price}>
-          <span>35 000 руб.</span>
+          <span>{getDigFormat(price)} руб.</span>
         </div>
       </div>
       <div className={styles.channelActions}>
         <div className={styles.channelActions__body}>
-          <button type="button" className={styles.channelActions__button}>
-            <span>Связаться</span>
-          </button>
-          <button type="button" className={styles.channelActions__button}>
-            <span>Поторговаться</span>
-          </button>
+          {
+            isLinks ?
+              <TelegramLinks />
+              :
+              <ButtonTelLink link={findLink} classes={styles.channelActions__button}>
+                <span>Связаться с менеджмером</span>
+              </ButtonTelLink>
+          }
         </div>
       </div>
     </div>

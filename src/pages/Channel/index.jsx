@@ -13,17 +13,22 @@ import GeoLocation from '../../components/GeoLocation';
 import ReviewsSlider from '../../components/ReviewsSlider';
 import AdvertisementSlider from '../../components/AdvertisementSlider';
 import SameChannelSlider from '../../components/SameChannelSlider';
+import { ButtonTelLink } from '../../components/common/Button';
+import SkeletonChannel from './SkeletonChannel';
+import { getDigFormat, isEmpty } from '../../helpers/functions';
 
 import axios from "../../services/axios"
 import styles from "./Channel.module.scss";
-import img from "../../assets/img/01.png";
 import 'simplebar-react/dist/simplebar.min.css';
 
 const Channel = () => {
   const [channelData, setChannelData] = React.useState({});
-
+  const [sameChannels, setSameChannels] = React.useState([]);
   const navigate = useNavigate();
   const { channelId } = useParams();
+
+  const isChannelData = isEmpty(channelData);
+  const channelImage = "http://64.225.58.67:300" + channelData.logo;
 
   const goBack = () => {
     navigate(-1);
@@ -31,15 +36,20 @@ const Channel = () => {
 
   React.useEffect(() => {
     fetchChannel(channelId);
+
+    window.scrollTo(0, 0);
   }, [])
 
   async function fetchChannel(id) {
-    const { data: { data } } = await axios.get(`/channels/${id}`);
+    const { data } = await axios.get(`/channels/${id}`);
 
-    setChannelData(data)
+    setChannelData(data.data);
+    setSameChannels(data.similar_channels);
   }
 
-  console.log(channelData);
+  if (isChannelData) {
+    return <SkeletonChannel />
+  }
 
   return (
     <div className={styles.channel}>
@@ -50,24 +60,27 @@ const Channel = () => {
               <div className={styles.channelProfile__actions}>
                 <button onClick={goBack} type="button" className={clsx(styles.channelProfile__backIcon, "_icon-angle-left")} />
                 <Badge
-                  title={"Дизайн"}
+                  title={channelData.title}
                   classes={styles.channelProfile__badge}
                 />
               </div>
-              <div className={styles.channelProfile__image}>
-                <img src={img} alt="" />
-              </div>
+              <ButtonTelLink
+                link={channelData.telegram_link}
+                classes={styles.channelProfile__image}
+              >
+                <img src={channelImage} alt="" />
+              </ButtonTelLink>
               <button type="button" className={clsx(styles.channelProfile__icon, "_icon-bookmark")} />
             </div>
             <div className={styles.channelProfile__content}>
               <h1 className={styles.channelProfile__title}>
-                Логово дизайнера
+                {channelData.title}
               </h1>
               <div className={clsx(styles.channelProfile__subcribers, "_icon-profile")}>
-                23 200
+                {getDigFormat(channelData.subscribes_count)}
               </div>
               <p className={styles.channelProfile__text}>
-                Все необходимые знания, навыки, тренды и полезные в работе инструменты для дизайнера.
+                {channelData.text}
               </p>
             </div>
             <div className={styles.channelProfile__body}>
@@ -85,7 +98,13 @@ const Channel = () => {
         <TabPanel>
           <div className={styles.channelContent}>
             <Container>
-              <ChannelInfo />
+              <ChannelInfo
+                tgstatLink={channelData.tgstat_link}
+                telemetrLink={channelData.telemetr_link}
+                cpm={channelData.CPM}
+                err={channelData.ERR}
+                coverage={channelData.coverage}
+              />
             </Container>
           </div>
           <div className={styles.channelSwiper}>
@@ -113,16 +132,16 @@ const Channel = () => {
               <div className={styles.channelSwiperSlider}>
                 <Container>
                   <TabPanel>
-                    <GenderCount />
+                    <GenderCount woman={channelData.woman} man={channelData.man} />
                   </TabPanel>
                   <TabPanel>
-                    <GeoLocation />
+                    <GeoLocation countries={channelData.countries} />
                   </TabPanel>
                   <TabPanel>
-                    <ReviewsSlider />
+                    <ReviewsSlider reviews={channelData.reviews} />
                   </TabPanel>
                   <TabPanel>
-                    <AdvertisementSlider />
+                    <AdvertisementSlider ads={channelData.ads_examples} />
                   </TabPanel>
                 </Container>
               </div>
@@ -132,15 +151,18 @@ const Channel = () => {
         <TabPanel>
           <div className={clsx(styles.channelContent, styles.channelContent_margin)}>
             <Container>
-              <ChannelPriceActions />
+              <ChannelPriceActions
+                price={channelData.ads_price}
+                contactNetwork={channelData.contact_for_network}
+                contactSales={channelData.contact_for_sales}
+              />
             </Container>
           </div>
           <Container>
-            <SameChannelSlider />
+            <SameChannelSlider sameChannels={sameChannels} />
           </Container>
         </TabPanel>
       </Tabs>
-
     </div>
   )
 }

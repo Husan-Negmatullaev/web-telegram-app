@@ -56,14 +56,22 @@
       position: absolute;
       left: 0;
       margin: rem(50) 0px 0px 0px;
+
+      @media (max-width: 425px) {
+        max-width: rem(110);
+      }
     }
 
     &__image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       border-radius: 50%;
       overflow: hidden;
       flex: 0 0 rem(93);
       height: rem(93);
       margin: 0 auto;
+      background-color: #fff;
 
       img {
         width: 100%;
@@ -91,7 +99,7 @@
     &__subcribers {
       display: inline-flex;
       align-items: center;
-      gap: rem(3);
+      column-gap: rem(7);
       font-size: rem(15);
       line-height: math.div(22, 15);
       margin-bottom: rem(12);

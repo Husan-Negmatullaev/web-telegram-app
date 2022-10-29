@@ -22,13 +22,14 @@ const sliceCategories = createSlice({
       }
       if (!state.categoriesId.includes(actions.payload)) {
         state.categoriesId = [...state.categoriesId, actions.payload];
+        return;
       }
     },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchCategories.pending, (state, actions) => {
       state.categories = [];
-      state.categoriesId = [];
+      state.categoriesId = [...state.categoriesId];
       state.status = "loading";
     });
     builder.addCase(fetchCategories.rejected, (state, actions) => {
@@ -40,7 +41,7 @@ const sliceCategories = createSlice({
       const [categoriesId] = removeObject(actions.payload, "channels");
 
       state.categories = categoriesId;
-      state.categoriesId = [0];
+      state.categoriesId = [...state.categoriesId];
       state.status = "success";
     });
   },

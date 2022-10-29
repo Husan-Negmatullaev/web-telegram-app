@@ -8,7 +8,6 @@
 .checkbox {
   background-color: #1B203D;
   border-radius: rem(20);
-  padding: rem(10) rem(25);
   cursor: pointer;
 
   &__input {
@@ -27,6 +26,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: rem(10) rem(25);
   }
 
   &__text {

@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 
 import ChannelBlog from "../../components/ChannelBlog";
@@ -9,14 +10,19 @@ import { list } from "../../mocks/channel-list";
 import styles from "./Favourites.module.scss";
 
 const Favourites = () => {
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <div className={styles.listChannel}>
       <Container classes={styles.listChannel__container}>
         <Title classes={styles.listChannel__title}>Избранные каналы</Title>
         <div className={styles.listChannel__body}>
-          {list.map((obj, index) => {
+          {/* {list.map((obj, index) => {
             return (
-              <div className={styles.channels}>
+              <div key={obj.id} className={styles.channels}>
                 <Badge
                   className={styles.channels__badge}
                   title={obj.title}
@@ -24,16 +30,16 @@ const Favourites = () => {
                 <div className={styles.channels__body}>
                   <Link key={obj.id} to={`/posts/channel/${obj.id}`}>
                     <ChannelBlog
-                      subscribers={obj.subscribers}
+                      subscribes_count={obj.subscribers}
                       title={obj.title}
                       text={obj.text}
-                      imageUrl={obj.imageUrl}
+                      logo={obj.imageUrl}
                     />
                   </Link>
                 </div>
               </div>
             )
-          })}
+          })} */}
         </div>
       </Container>
     </div >

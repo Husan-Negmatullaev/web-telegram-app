@@ -23,6 +23,11 @@
 
   &__logo {
     margin-bottom: rem(10);
+
+    img {
+      height: rem(15);
+      max-width: rem(15);
+    }
   }
 
   &__title {

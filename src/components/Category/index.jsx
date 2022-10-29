@@ -11,7 +11,7 @@ import 'simplebar-react/dist/simplebar.min.css';
 import styles from "./Category.module.scss"
 
 const Category = () => {
-  const { categories, status } = useSelector(selectCategories);
+  const { categories, categoriesId, status } = useSelector(selectCategories);
   const dispatch = useDispatch();
   const isSucces = status === "success";
 
@@ -26,6 +26,7 @@ const Category = () => {
           <ul className={styles.categories__list}>
             <CategoryItem
               category={{ title: "Все", id: 0 }}
+              categoriesId={categoriesId}
             />
             {isSucces ?
               categories.map((category) => {
@@ -33,6 +34,7 @@ const Category = () => {
                   <CategoryItem
                     key={category.id}
                     category={category}
+                    categoriesId={categoriesId}
                   />
                 )
               })

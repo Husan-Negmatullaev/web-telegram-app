@@ -16,6 +16,8 @@ function App() {
 
   React.useEffect(() => {
     tg.ready();
+
+    tg.showAlert("some");
   }, [])
 
   return (
@@ -27,7 +29,7 @@ function App() {
           <Route path="filter" element={<FilterPage />} />
         </Route>
         <Route path="/posts/" element={<HeaderLayout />}>
-          <Route path=":postId" element={<Post />} />
+          <Route path="post" element={<Post />} />
           <Route path="channel/:channelId" element={<Channel />} />
         </Route>
       </Routes>

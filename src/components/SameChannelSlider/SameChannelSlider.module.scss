@@ -10,6 +10,10 @@
 
   &__title {
     margin-bottom: rem(10);
+
+    button {
+      display: none;
+    }
   }
 
   &__swiper {}
@@ -26,6 +30,8 @@
     padding: rem(16) rem(20);
     background-color: #1B203D;
     border-radius: rem(20);
+    width: 100%;
+    height: 100%;
   }
 
   &__image {
@@ -51,6 +57,12 @@
     &:not(:last-child) {
       margin-bottom: rem(5);
     }
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   &__subscribers {

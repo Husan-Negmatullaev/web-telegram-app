@@ -1,12 +1,21 @@
+import React from 'react';
+import { useSelector } from 'react-redux/es/exports';
+
 import Container from '../../components/common/Container';
 import FilterCheckbox from '../../components/common/FilterCheckbox';
 import Title from '../../components/common/Title';
 import { Button } from '../../components/common/Button';
+import { selectCategories } from '../../redux/slices/categories/selectors';
 
 import styles from "./FilterPage.module.scss";
-import { filterList } from "../../mocks/filter-list"
 
 const FilterPage = () => {
+  const { categories, categoriesId } = useSelector(selectCategories);
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <div className={styles.filterPage}>
       <Container>
@@ -17,14 +26,19 @@ const FilterPage = () => {
       <form className={styles.filterPageForm}>
         <Container>
           <div className={styles.filterPageForm__body}>
-            {
-              filterList.map((obj) => {
-                return <FilterCheckbox
-                  label={obj.label}
-                  key={obj.id}
-                />
-              })
-            }
+            <FilterCheckbox
+              label={"Все"}
+              idCategory={0}
+              categoriesId={categoriesId}
+            />
+            {categories.map((obj) => {
+              return <FilterCheckbox
+                key={obj.id}
+                label={obj.title}
+                idCategory={obj.id}
+                categoriesId={categoriesId}
+              />
+            })}
           </div>
           <Button
             text={"Применить"}
