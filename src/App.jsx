@@ -6,18 +6,17 @@ import FilterPage from "./pages/FilterPage";
 import Favourites from "./pages/Favourites";
 import Channel from "./pages/Channel";
 import MainLayout from "./layouts/MainLayout";
-import HeaderLayout from "./layouts/HeaderLayout/indes";
+import HeaderLayout from "./layouts/HeaderLayout";
 import Post from "./pages/Post";
 import "./styles/index.scss"
 
 const tg = window.Telegram.WebApp;
 
+
 function App() {
 
   React.useEffect(() => {
     tg.ready();
-
-    tg.showAlert("some");
   }, [])
 
   return (
