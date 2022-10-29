@@ -4,7 +4,6 @@ import clsx from "clsx";
 
 import Title from "../common/Title"
 import styles from "./SameChannelSlider.module.scss";
-import img from "../../assets/img/02.png"
 import { getDigFormat } from '../../helpers/functions';
 
 const SameChannelSlider = ({ sameChannels }) => {

@@ -4,7 +4,6 @@ import clsx from "clsx";
 
 import Container from "../../components/common/Container";
 
-import img from "../../assets/img/05.png"
 import styles from "./Post.module.scss";
 
 const Post = () => {
