@@ -1,0 +1,1 @@
+export const selectCategories = (store) => store.categories;

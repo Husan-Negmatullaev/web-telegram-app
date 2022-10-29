@@ -1,5 +1,6 @@
 export const list = [
   {
+    id: 1,
     title: "Дизайн",
     data: [
       {
@@ -19,6 +20,7 @@ export const list = [
     ]
   },
   {
+    id: 2,
     title: "Образование",
     data: [
       {

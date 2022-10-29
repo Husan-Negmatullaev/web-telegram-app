@@ -1,17 +1,21 @@
 import clsx from "clsx";
+import { getDigFormat } from "../../helpers/functions";
 
-import img from "../../assets/img/01.png"
 import styles from "./ChannelBlog.module.scss";
 
-const ChannelBlog = ({ subscribers, title, text, imageUrl }) => {
+const ChannelBlog = ({ subscribes_count, title, text, logo }) => {
+  const baseUrl = "http://64.225.58.67:300";
+
+  const formatSubscribeCount = getDigFormat(subscribes_count);
+
   return (
     <div className={styles.channelBlog}>
       <div className={styles.channelBlog__image}>
-        <img src={img} alt="" />
+        <img src={baseUrl + logo} alt="" />
       </div>
       <div className={styles.channelBlog__content}>
         <div className={clsx(styles.channelBlog__subscribers, "_icon-profile")}>
-          {subscribers}
+          {formatSubscribeCount}
         </div>
         <h3 className={styles.channelBlog__title}>{title}</h3>
         <div className={styles.channelBlog__text}>

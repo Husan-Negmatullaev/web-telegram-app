@@ -1,11 +1,13 @@
+import React from 'react'
 import { Link } from "react-router-dom";
 
-import ChannelBlog from "../ChannelBlog";
-import Badge from "../common/Badge/Index";
+import Badge from '../../components/common/Badge/Index';
+import ChannelBlog from '../../components/ChannelBlog';
+
 import styles from "./Channels.module.scss";
+import { getDigFromString } from '../../helpers/functions';
 
-const Channels = ({ title, data }) => {
-
+const Channels = ({ title, channels }) => {
   return (
     <div className={styles.channels}>
       <Badge
@@ -13,26 +15,19 @@ const Channels = ({ title, data }) => {
         title={title}
       />
       <div className={styles.channels__body}>
-        {
-          data.map(obj => {
-            return (
-              <Link
-                key={obj.id}
-                to={`/posts/channel/${obj.id}`}
-              >
-                <ChannelBlog
-                  subscribers={obj.subscribers}
-                  title={obj.title}
-                  text={obj.text}
-                  imageUrl={obj.imageUrl}
-                />
-              </Link>
-            )
-          })
-        }
+        {channels.map((channel) => {
+          const idUrl = getDigFromString(channel.url);
+          return (
+            <Link key={channel.logo} to={`/posts/channel/${idUrl}`}>
+              <ChannelBlog
+                {...channel}
+              />
+            </Link>
+          )
+        })}
       </div>
     </div>
   )
 }
 
-export default Channels;
+export default Channels

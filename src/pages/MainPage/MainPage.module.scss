@@ -10,7 +10,7 @@
 }
 
 .headerPage {
-  margin: 0px 0px rem(25) 0px;
+  margin: 0px 0px rem(20) 0px;
 
   &__container {}
 }
@@ -36,7 +36,7 @@
   }
 
   &__title {
-    margin: 0px 0px rem(15) 0px;
+    margin: 0px auto rem(15) !important;
   }
 
   &__body {}

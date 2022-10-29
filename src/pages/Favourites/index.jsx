@@ -1,7 +1,10 @@
+import { Link } from "react-router-dom";
 
-import Channels from "../../components/Channels";
+import ChannelBlog from "../../components/ChannelBlog";
+import Badge from "../../components/common/Badge/Index";
 import Container from "../../components/common/Container";
 import Title from "../../components/common/Title";
+
 import { list } from "../../mocks/channel-list";
 import styles from "./Favourites.module.scss";
 
@@ -13,11 +16,22 @@ const Favourites = () => {
         <div className={styles.listChannel__body}>
           {list.map((obj, index) => {
             return (
-              <Channels
-                key={index}
-                title={obj.title}
-                data={obj.data}
-              />
+              <div className={styles.channels}>
+                <Badge
+                  className={styles.channels__badge}
+                  title={obj.title}
+                />
+                <div className={styles.channels__body}>
+                  <Link key={obj.id} to={`/posts/channel/${obj.id}`}>
+                    <ChannelBlog
+                      subscribers={obj.subscribers}
+                      title={obj.title}
+                      text={obj.text}
+                      imageUrl={obj.imageUrl}
+                    />
+                  </Link>
+                </div>
+              </div>
             )
           })}
         </div>

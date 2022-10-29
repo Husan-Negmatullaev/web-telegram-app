@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import clsx from "clsx";
 import SimpleBar from 'simplebar-react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
@@ -12,18 +12,34 @@ import GenderCount from '../../components/GenderCount';
 import GeoLocation from '../../components/GeoLocation';
 import ReviewsSlider from '../../components/ReviewsSlider';
 import AdvertisementSlider from '../../components/AdvertisementSlider';
-
-import styles from "./Channel.module.scss";
 import SameChannelSlider from '../../components/SameChannelSlider';
+
+import axios from "../../services/axios"
+import styles from "./Channel.module.scss";
 import img from "../../assets/img/01.png";
 import 'simplebar-react/dist/simplebar.min.css';
 
 const Channel = () => {
+  const [channelData, setChannelData] = React.useState({});
+
   const navigate = useNavigate();
+  const { channelId } = useParams();
 
   const goBack = () => {
     navigate(-1);
   };
+
+  React.useEffect(() => {
+    fetchChannel(channelId);
+  }, [])
+
+  async function fetchChannel(id) {
+    const { data: { data } } = await axios.get(`/channels/${id}`);
+
+    setChannelData(data)
+  }
+
+  console.log(channelData);
 
   return (
     <div className={styles.channel}>

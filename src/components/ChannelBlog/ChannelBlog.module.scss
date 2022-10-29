@@ -15,11 +15,15 @@
   gap: rem(12);
 
   &__image {
+    background-color: #fff;
+    flex: 0 0 rem(43);
+    height: rem(43);
     align-self: start;
+    border-radius: 0 0 20px 0;
+    overflow: hidden;
 
     img {
-      // overflow: hidden;
-      border-radius: 0 0 20px 0;
+      max-width: 100%;
     }
   }
 
