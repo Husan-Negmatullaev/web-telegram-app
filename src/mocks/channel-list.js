@@ -1,42 +1,32 @@
 export const list = [
   {
-    id: 1,
-    title: "Дизайн",
-    data: [
+    "id": 1,
+    "title": "Категории 1",
+    "channels": [
       {
-        id: 1,
-        subscribers: "23200",
-        title: "Логово дизайнера",
-        text: "Все необходимые знания, навыки, тренды и полезные some info some info some info",
-        imageUrl: "../../assets/img/01.png",
+        "logo": "/media/channels_logo/favicon.png",
+        "subscribes_count": 2616535,
+        "title": "Риа",
+        "text": "Риа новости",
+        "url": "/api/channels/1"
       },
       {
-        id: 2,
-        subscribers: "23200",
-        title: "Фигма — Макеты для верстки",
-        text: "Дизайн-макеты для верстки сайтов, практикуйся и some info some info",
-        imageUrl: "../../assets/img/02.png",
-      },
+        "logo": "/media/channels_logo/BDEE8C99-3AA4-41D6-A4F4-DEE60C6441EA.jpeg",
+        "subscribes_count": 22582,
+        "title": "Логово дизайнера",
+        "text": "Все необходимые знания, навыки, тренды и полезные в работе инструменты для дизайнера",
+        "url": "/api/channels/2"
+      }
     ]
   },
   {
-    id: 2,
-    title: "Образование",
-    data: [
-      {
-        id: 1,
-        subscribers: "94200",
-        title: "Лекторий",
-        text: "Бесплатные лекции, семинары и мастер-классы some info some info some info",
-        imageUrl: "../../assets/img/03.png",
-      },
-      {
-        id: 2,
-        subscribers: "191300",
-        title: "Эрудиция | Digital и бизнес",
-        text: "Дизайн-макеты для верстки сайтов, практикуйся и some info some info",
-        imageUrl: "../../assets/img/04.png",
-      },
-    ]
+    "id": 3,
+    "title": "Категория 2",
+    "channels": []
   },
+  {
+    "id": 4,
+    "title": "Дизайн",
+    "channels": []
+  }
 ];
