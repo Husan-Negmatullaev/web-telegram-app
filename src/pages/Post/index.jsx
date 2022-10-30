@@ -10,7 +10,7 @@ const Post = () => {
   const navigate = useNavigate();
   const { state: { title, text, photo } } = useLocation();
 
-  const imageUrl = "http://64.225.58.67:300" + photo;
+  const imageUrl = "https://aviatatravel.com" + photo;
 
   const goBack = () => {
     navigate(-1);

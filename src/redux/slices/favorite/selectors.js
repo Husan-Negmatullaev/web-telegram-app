@@ -1,0 +1,1 @@
+export const selectUser = (store) => store.favorite;

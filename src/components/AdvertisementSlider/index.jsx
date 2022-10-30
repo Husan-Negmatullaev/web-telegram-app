@@ -24,7 +24,7 @@ const AdvertisementSlider = ({ ads }) => {
       >
         {
           ads.map((ad, index) => {
-            const imageUrl = "http://64.225.58.67:300" + ad.icon;
+            const imageUrl = "https://aviatatravel.com" + ad.icon;
             return (
               <SwiperSlide
                 key={ad.id}

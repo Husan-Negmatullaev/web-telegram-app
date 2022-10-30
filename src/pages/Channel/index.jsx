@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import clsx from "clsx";
 import SimpleBar from 'simplebar-react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { useSelector, useDispatch } from 'react-redux/es';
 
 import Badge from "../../components/common/Badge/Index";
 import Container from "../../components/common/Container";
@@ -15,24 +16,26 @@ import AdvertisementSlider from '../../components/AdvertisementSlider';
 import SameChannelSlider from '../../components/SameChannelSlider';
 import { ButtonTelLink } from '../../components/common/Button';
 import SkeletonChannel from './SkeletonChannel';
+
 import { getDigFormat, isEmpty } from '../../helpers/functions';
+import { selectUser } from '../../redux/slices/favorite/selectors';
 
 import axios from "../../services/axios"
 import styles from "./Channel.module.scss";
 import 'simplebar-react/dist/simplebar.min.css';
 
 const Channel = () => {
+  const dispatch = useDispatch();
+  const { userFavourites: { user, list } } = useSelector(selectUser);
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [isFavorite, setIsFavorite] = React.useState(false);
   const [channelData, setChannelData] = React.useState({});
   const [sameChannels, setSameChannels] = React.useState([]);
-  const navigate = useNavigate();
   const { channelId } = useParams();
+  const navigate = useNavigate();
 
   const isChannelData = isEmpty(channelData);
-  const channelImage = "http://64.225.58.67:300" + channelData.logo;
-
-  const goBack = () => {
-    navigate(-1);
-  };
+  const channelImage = "https://aviatatravel.com" + channelData.logo;
 
   React.useEffect(() => {
     fetchChannel(channelId);
@@ -40,11 +43,59 @@ const Channel = () => {
     window.scrollTo(0, 0);
   }, [])
 
+  const goBack = () => {
+    navigate(-1);
+  };
+
+  // const activeStyle = {
+  //   background: "linear-gradient(114.44deg, #624AF2 0%, #50DDC3 100%)",
+  //   "WebkitBackgroundClip": "text",
+  //   "MozBackgroundClip": "text",
+  //   "backgroundClip": "text",
+  //   "WebkitTextFillColor": "transparent",
+  // };
+
   async function fetchChannel(id) {
     const { data } = await axios.get(`/channels/${id}`);
 
     setChannelData(data.data);
     setSameChannels(data.similar_channels);
+  };
+
+  async function sendChannelData(user, channelId) {
+    const bodyFormData = new FormData();
+    bodyFormData.append("user_id", user);
+    bodyFormData.append("channel_id", channelId);
+
+    setIsLoading(true);
+
+    try {
+      if (list.length > 0) {
+        bodyFormData.append("method", "delete");
+
+        await axios({
+          method: "post",
+          url: "/favorites/",
+          data: bodyFormData,
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+        setIsFavorite(false)
+        return;
+      }
+
+      await axios({
+        method: "post",
+        url: "/favorites/",
+        data: bodyFormData,
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      setIsFavorite(true)
+
+    } catch (error) {
+      console.log("Cant send data into into", error);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   if (isChannelData) {
@@ -70,7 +121,22 @@ const Channel = () => {
               >
                 <img src={channelImage} alt="" />
               </ButtonTelLink>
-              <button type="button" className={clsx(styles.channelProfile__icon, "_icon-bookmark")} />
+              {isLoading ?
+                <div className={styles["lds-ring"]}>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+                :
+                <button
+                  type="button"
+                  className={
+                    clsx(styles.channelProfile__icon, "_icon-bookmark",
+                      { [styles.channelProfile__icon_active]: isFavorite })
+                  }
+                  onClick={() => sendChannelData(user, channelData.id)}
+                />}
             </div>
             <div className={styles.channelProfile__content}>
               <h1 className={styles.channelProfile__title}>

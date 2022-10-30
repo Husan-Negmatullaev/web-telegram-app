@@ -26,7 +26,7 @@ const SameChannelSlider = ({ sameChannels }) => {
         scrollbar={{ draggable: true }}
       >
         {sameChannels.map(channel => {
-          const imageUrl = "http://64.225.58.67:300" + channel.logo;
+          const imageUrl = "https://aviatatravel.com" + channel.logo;
           return (
             <SwiperSlide key={channel.url} className={styles.sameChannels__slide}>
               <button type="button" className={styles.sameChannels__item}>

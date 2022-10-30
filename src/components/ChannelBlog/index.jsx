@@ -4,7 +4,7 @@ import { getDigFormat } from "../../helpers/functions";
 import styles from "./ChannelBlog.module.scss";
 
 const ChannelBlog = ({ subscribes_count, title, text, logo }) => {
-  const baseUrl = "http://64.225.58.67:300";
+  const baseUrl = "https://aviatatravel.com";
 
   const formatSubscribeCount = getDigFormat(subscribes_count);
 
