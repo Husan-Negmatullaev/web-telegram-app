@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ab91b805.css",
+    "main.js": "/static/js/main.1ec09205.js",
+    "static/media/SFProText-Semibold.woff": "/static/media/SFProText-Semibold.8171dbc8c93604d3cf0f.woff",
+    "static/media/SFProText-Regular.woff": "/static/media/SFProText-Regular.da1b6179d6525bb299d5.woff",
+    "static/media/SFProText-Semibold.woff2": "/static/media/SFProText-Semibold.54fb144c9b3631e2cfea.woff2",
+    "static/media/SFProText-Regular.woff2": "/static/media/SFProText-Regular.e801ac8b4aa8922c0627.woff2",
+    "static/media/GolosText-DemiBold.woff": "/static/media/GolosText-DemiBold.326bad87cb1486376754.woff",
+    "static/media/GolosText-Medium.woff": "/static/media/GolosText-Medium.543d10f5b14f5b267608.woff",
+    "static/media/GolosText-Bold.woff": "/static/media/GolosText-Bold.251c8b2266870e832840.woff",
+    "static/media/GolosText-Regular.woff": "/static/media/GolosText-Regular.db6d8bc54581c6bc5cd6.woff",
+    "static/media/GolosText-DemiBold.woff2": "/static/media/GolosText-DemiBold.7f3d137fb42dc2522191.woff2",
+    "static/media/GolosText-Medium.woff2": "/static/media/GolosText-Medium.91d197ea123b1140c833.woff2",
+    "static/media/GolosText-Bold.woff2": "/static/media/GolosText-Bold.93fced62853d755135fb.woff2",
+    "static/media/GolosText-Regular.woff2": "/static/media/GolosText-Regular.c480108b5666dcee4fff.woff2",
+    "static/media/icons.woff": "/static/media/icons.e4e2106f61aa32691f76.woff",
+    "static/media/icons.woff2": "/static/media/icons.33d1271801b3decc2aa2.woff2",
+    "index.html": "/index.html",
+    "main.ab91b805.css.map": "/static/css/main.ab91b805.css.map",
+    "main.1ec09205.js.map": "/static/js/main.1ec09205.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ab91b805.css",
+    "static/js/main.1ec09205.js"
+  ]
+}
