@@ -20,7 +20,7 @@ function App() {
 
   return (
     <div className="wrapper">
-      {tg.initData}
+      {/* {tg.initData} */}
       {/* {tg.initDataUnsafe} */}
       <Routes>
         <Route path="/" element={<MainLayout />}>
