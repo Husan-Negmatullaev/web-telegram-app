@@ -17,12 +17,13 @@ import SameChannelSlider from '../../components/SameChannelSlider';
 import { ButtonTelLink } from '../../components/common/Button';
 import SkeletonChannel from './SkeletonChannel';
 
-import { getDigFormat, isEmpty } from '../../helpers/functions';
+import { getDigFormat, getDigFromString, isEmpty } from '../../helpers/functions';
 import { selectUser } from '../../redux/slices/favorite/selectors';
 
 import axios from "../../services/axios"
 import styles from "./Channel.module.scss";
 import 'simplebar-react/dist/simplebar.min.css';
+import { fetchFavorites } from '../../redux/slices/favorite/asyncActions';
 
 const Channel = () => {
   const dispatch = useDispatch();
@@ -41,19 +42,18 @@ const Channel = () => {
     fetchChannel(channelId);
 
     window.scrollTo(0, 0);
+
+    if (list.length > 0) {
+      const findFavorite = list.some(item => {
+        return item.channels.find(channel => getDigFromString(channel.url) === Number(channelId));
+      })
+      setIsFavorite(findFavorite);
+    }
   }, [])
 
   const goBack = () => {
     navigate(-1);
   };
-
-  // const activeStyle = {
-  //   background: "linear-gradient(114.44deg, #624AF2 0%, #50DDC3 100%)",
-  //   "WebkitBackgroundClip": "text",
-  //   "MozBackgroundClip": "text",
-  //   "backgroundClip": "text",
-  //   "WebkitTextFillColor": "transparent",
-  // };
 
   async function fetchChannel(id) {
     const { data } = await axios.get(`/channels/${id}`);
@@ -63,6 +63,7 @@ const Channel = () => {
   };
 
   async function sendChannelData(user, channelId) {
+    // console.log(user, channelId);
     const bodyFormData = new FormData();
     bodyFormData.append("user_id", user);
     bodyFormData.append("channel_id", channelId);
@@ -70,7 +71,7 @@ const Channel = () => {
     setIsLoading(true);
 
     try {
-      if (list.length > 0) {
+      if (list.length > 0 && isFavorite) {
         bodyFormData.append("method", "delete");
 
         await axios({
@@ -79,6 +80,7 @@ const Channel = () => {
           data: bodyFormData,
           headers: { "Content-Type": "multipart/form-data" },
         });
+
         setIsFavorite(false)
         return;
       }
@@ -95,6 +97,7 @@ const Channel = () => {
       console.log("Cant send data into into", error);
     } finally {
       setIsLoading(false);
+      // dispatch(fetchFavorites(user));
     }
   }
 
