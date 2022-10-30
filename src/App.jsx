@@ -12,7 +12,6 @@ import "./styles/index.scss"
 
 const tg = window.Telegram.WebApp;
 
-
 function App() {
 
   React.useEffect(() => {
@@ -21,6 +20,8 @@ function App() {
 
   return (
     <div className="wrapper">
+      {tg.initData}
+      {tg.initDataUnsafe}
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route path="" element={<MainPage />} />
