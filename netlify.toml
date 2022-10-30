@@ -1,4 +1,4 @@
-CI=false npm run build
+CI=false
 
 [[redirects]]
   from = "/*"
