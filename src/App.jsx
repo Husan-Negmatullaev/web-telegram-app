@@ -20,11 +20,12 @@ function App() {
 
   React.useEffect(() => {
     tg.ready();
+    // console.log();
     dispatch(fetchFavorites("987654321"));
   }, [])
-
   return (
     <div className="wrapper">
+      {tg.initData}
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route path="" element={<MainPage />} />

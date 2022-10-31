@@ -23,10 +23,9 @@ import { selectUser } from '../../redux/slices/favorite/selectors';
 import axios from "../../services/axios"
 import styles from "./Channel.module.scss";
 import 'simplebar-react/dist/simplebar.min.css';
-import { fetchFavorites } from '../../redux/slices/favorite/asyncActions';
 
 const Channel = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const { userFavourites: { user, list } } = useSelector(selectUser);
   const [isLoading, setIsLoading] = React.useState(false);
   const [isFavorite, setIsFavorite] = React.useState(false);
@@ -97,7 +96,6 @@ const Channel = () => {
       console.log("Cant send data into into", error);
     } finally {
       setIsLoading(false);
-      // dispatch(fetchFavorites(user));
     }
   }
 
