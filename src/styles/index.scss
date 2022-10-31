@@ -142,3 +142,13 @@ body {
 // Подключение стилей отдельных блоков
 
 // Подключение стилей отдельных страниц
+
+.channel-page {
+  & .simplebar-track.simplebar-horizontal {
+    visibility: hidden !important;
+  }
+
+  & .simplebar-content {
+    // visibility: hidden !important;
+  }
+}

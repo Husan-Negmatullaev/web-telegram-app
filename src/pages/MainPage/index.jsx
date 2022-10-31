@@ -48,7 +48,7 @@ const MainPage = () => {
       <div className={styles.headerPage}>
         <Container>
           <div className={styles.actionTitle}>
-            <Title>Категории</Title>
+            <Title classes={styles.actionTitle__content}>Категории</Title>
             <Link
               type="button"
               className={styles.actionTitle__button}
