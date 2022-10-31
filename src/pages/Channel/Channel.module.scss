@@ -143,6 +143,7 @@
       line-height: math.div(22, 15);
       transition: all 0.3s ease 0s;
       text-align: center;
+      cursor: pointer;
 
       &_active {
         background-color: #1954C5;
@@ -185,6 +186,7 @@
         line-height: math.div(22, 15);
         color: #FCFCFC;
         position: relative;
+        cursor: pointer;
 
         &::after {
           content: '';

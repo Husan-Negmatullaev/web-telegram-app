@@ -25,6 +25,21 @@
       border: 1px solid #4E4B66;
       border-radius: rem(20);
       color: #FCFCFC;
+      transition: background-color 0.3s ease 0s;
+
+      @media (any-hover: hover) {
+        &:hover {
+          background-color: #6D9FFF;
+
+          span {
+            color: #fff;
+
+            &::before {
+              color: #fff;
+            }
+          }
+        }
+      }
     }
 
     &__label {
@@ -33,10 +48,12 @@
       align-items: center;
       justify-content: center;
       gap: rem(10);
+      transition: color 0.3s ease 0s;
 
       &::before {
         font-size: rem(14);
         color: #6D9FFF;
+        transition: color 0.3s ease 0s;
       }
     }
 

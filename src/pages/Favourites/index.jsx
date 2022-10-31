@@ -7,7 +7,6 @@ import Title from "../../components/common/Title";
 import { fetchFavorites } from "../../redux/slices/favorite/asyncActions";
 import { selectUser } from "../../redux/slices/favorite/selectors";
 
-// import { list } from "../../mocks/channel-list";
 import styles from "./Favourites.module.scss";
 import SkeletonChannels from "../../components/Channels/SkeletonChannels";
 

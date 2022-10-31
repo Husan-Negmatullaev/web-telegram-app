@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux/es/exports';
+import { useNavigatePage } from '../../helpers/hooks/useNavigatePage';
 
 import Container from '../../components/common/Container';
 import FilterCheckbox from '../../components/common/FilterCheckbox';
@@ -10,6 +11,7 @@ import { selectCategories } from '../../redux/slices/categories/selectors';
 import styles from "./FilterPage.module.scss";
 
 const FilterPage = () => {
+  const { goBack } = useNavigatePage();
   const { categories, categoriesId } = useSelector(selectCategories);
 
   React.useEffect(() => {
@@ -43,6 +45,7 @@ const FilterPage = () => {
           <Button
             text={"Применить"}
             classes={styles.filterPageForm__button}
+            onClick={goBack}
           />
         </Container>
       </form>

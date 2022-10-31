@@ -20,13 +20,12 @@ function App() {
 
   React.useEffect(() => {
     tg.ready();
-    // console.log();
-    dispatch(fetchFavorites("987654321"));
+    console.log();
+    // dispatch(fetchFavorites("503118393"));
+    dispatch(fetchFavorites(tg.initDataUnsafe?.user?.id));
   }, [])
   return (
     <div className="wrapper">
-      <span>{tg.showAlert(JSON.stringify(tg.initDataUnsafe))}</span>
-      <span>{tg.initDataUnsafe?.user?.id}</span>
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route path="" element={<MainPage />} />
