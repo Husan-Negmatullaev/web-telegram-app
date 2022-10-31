@@ -25,7 +25,7 @@ function App() {
   }, [])
   return (
     <div className="wrapper">
-      <span>{tg.showAlert(tg.initDataUnsafe)}</span>
+      <span>{tg.showAlert(JSON.stringify(tg.initDataUnsafe))}</span>
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route path="" element={<MainPage />} />
