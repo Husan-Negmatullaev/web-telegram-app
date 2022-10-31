@@ -25,7 +25,7 @@ function App() {
   }, [])
   return (
     <div className="wrapper">
-      {tg.initData}
+      <span>{tg.initDataUnsafe.user}</span>
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route path="" element={<MainPage />} />
