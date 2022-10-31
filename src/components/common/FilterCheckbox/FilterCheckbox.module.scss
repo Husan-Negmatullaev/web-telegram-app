@@ -34,6 +34,9 @@
     font-weight: 600;
     font-size: rem(15);
     line-height: math.div(22, 15);
+    margin: 0px rem(5) 0px 0px;
+    flex: 1 1 auto;
+    // text-align: center;
   }
 
   &__indicator {

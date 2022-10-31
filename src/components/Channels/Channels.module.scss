@@ -13,13 +13,17 @@
   &__body {
     display: flex;
     flex-direction: column;
-    gap: rem(15);
     padding: rem(20) 0px 0px 0px;
-
+    // gap: rem(15);
 
     >* {
       flex: 1 1 auto;
       border-radius: 20px;
+      display: block;
+
+      &:not(:last-child) {
+        margin-bottom: rem(15);
+      }
 
       &:last-child {
         margin: 0px 0px rem(15) 0px;
