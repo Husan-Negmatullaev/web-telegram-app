@@ -1,15 +1,28 @@
-import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper';
+import { useNavigate } from "react-router-dom";
 import clsx from "clsx";
 
 import Title from "../common/Title"
 import styles from "./SameChannelSlider.module.scss";
-import { getDigFormat } from '../../helpers/functions';
+import { getDigFormat, getDigFromString } from '../../helpers/functions';
 
 const SameChannelSlider = ({ sameChannels }) => {
+  const navigate = useNavigate();
 
   if (sameChannels.length === 0) {
-    return <span>Null</span>
+    return (
+      <div className={styles.sameChannels}>
+        <div className={styles.sameChannels__title}>
+          <Title>Нет похожих каналов</Title>
+        </div>
+      </div>
+    )
+  }
+
+  console.log(sameChannels);
+  function redurectByChannelId(channelId) {
+    navigate("/posts/channel/" + channelId);
   }
 
   return (
@@ -27,9 +40,15 @@ const SameChannelSlider = ({ sameChannels }) => {
       >
         {sameChannels.map(channel => {
           const imageUrl = "https://aviatatravel.com" + channel.logo;
+          const channelId = getDigFromString(channel.url);
+          console.log(channelId);
           return (
             <SwiperSlide key={channel.url} className={styles.sameChannels__slide}>
-              <button type="button" className={styles.sameChannels__item}>
+              <button
+                onClick={() => redurectByChannelId(channelId)}
+                type="button"
+                className={styles.sameChannels__item}
+              >
                 <div className={styles.sameChannels__image}>
                   <img src={imageUrl} alt="" />
                 </div>

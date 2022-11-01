@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import clsx from "clsx";
 import SimpleBar from 'simplebar-react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { useSelector, useDispatch } from 'react-redux/es';
+import { useSelector } from 'react-redux/es';
 
 import Badge from "../../components/common/Badge/Index";
 import Container from "../../components/common/Container";
@@ -31,15 +31,16 @@ const Channel = () => {
   const [isFavorite, setIsFavorite] = React.useState(false);
   const [channelData, setChannelData] = React.useState({});
   const [sameChannels, setSameChannels] = React.useState([]);
+
   const { channelId } = useParams();
   const navigate = useNavigate();
 
-  const isChannelData = isEmpty(channelData);
+  // let isChannelData = isEmpty(channelData);
   const channelImage = "https://aviatatravel.com" + channelData.logo;
 
   React.useEffect(() => {
+    setChannelData({});
     fetchChannel(channelId);
-
     window.scrollTo(0, 0);
 
     if (list.length > 0) {
@@ -48,7 +49,20 @@ const Channel = () => {
       })
       setIsFavorite(findFavorite);
     }
-  }, [])
+  }, [channelId])
+
+  // React.useEffect(() => {
+  //   fetchChannel(channelId);
+
+  //   window.scrollTo(0, 0);
+
+  //   if (list.length > 0) {
+  //     const findFavorite = list.some(item => {
+  //       return item.channels.find(channel => getDigFromString(channel.url) === Number(channelId));
+  //     })
+  //     setIsFavorite(findFavorite);
+  //   }
+  // }, [channelId])
 
   const goBack = () => {
     navigate(-1);
@@ -100,7 +114,7 @@ const Channel = () => {
     }
   }
 
-  if (isChannelData) {
+  if (isEmpty(channelData)) {
     return <SkeletonChannel />
   }
 

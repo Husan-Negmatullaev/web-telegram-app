@@ -29,7 +29,6 @@ const AdvertisementSlider = ({ ads }) => {
               <SwiperSlide
                 key={ad.id}
                 className={styles.advertisement__slide}
-                onClick={() => { }}
               >
                 <div className={styles.advertisement__item}>
                   <div className={styles.advertisement__logo}>
