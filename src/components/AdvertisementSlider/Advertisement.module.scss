@@ -22,11 +22,17 @@
   }
 
   &__logo {
-    margin-bottom: rem(10);
+
+    // margin-bottom: rem(10);
+    &:not(:last-child) {
+      margin-bottom: rem(8);
+    }
 
     img {
-      height: rem(15);
-      max-width: rem(15);
+      height: rem(25);
+      max-width: rem(25);
+      border-radius: 10px;
+      overflow: hidden;
     }
   }
 

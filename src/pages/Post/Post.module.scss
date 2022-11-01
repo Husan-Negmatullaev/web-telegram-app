@@ -5,6 +5,11 @@
   @return $result;
 }
 
+@function percent($px, $from) {
+  $result: math.div($px, $from) * 100%;
+  @return $result;
+}
+
 .post {
   margin: rem(25) 0px rem(30) 0px;
 
@@ -22,18 +27,24 @@
 
   &__image {
     position: relative;
-    padding-bottom: 100%;
+    // padding-bottom: percent(325, 375);
     border-radius: rem(20);
     overflow: hidden;
-    margin-bottom: rem(20);
+
+    // margin-bottom: ;
+    &:not(:last-child) {
+      margin-bottom: rem(20);
+    }
 
     img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      max-width: 100%;
+      max-height: rem(360);
+      // position: absolute;
+      // top: 0;
+      // left: 0;
+      // width: 100%;
+      // height: 100%;
+      // object-fit: cover;
     }
   }
 
