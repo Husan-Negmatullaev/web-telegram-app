@@ -127,7 +127,7 @@ const Channel = () => {
               <div className={styles.channelProfile__actions}>
                 <button onClick={goBack} type="button" className={clsx(styles.channelProfile__backIcon, "_icon-angle-left")} />
                 <Badge
-                  title={channelData.title}
+                  title={channelData.category_name}
                   classes={styles.channelProfile__badge}
                 />
               </div>

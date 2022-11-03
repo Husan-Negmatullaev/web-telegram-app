@@ -20,8 +20,8 @@ function App() {
 
   React.useEffect(() => {
     tg.ready();
-    // dispatch(fetchFavorites("503118393"));
-    dispatch(fetchFavorites(tg.initDataUnsafe?.user?.id));
+    dispatch(fetchFavorites("503118393"));
+    // dispatch(fetchFavorites(tg.initDataUnsafe?.user?.id));
   }, [])
 
   return (
