@@ -1,10 +1,15 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const useNavigatePage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const goBack = () => {
-    navigate(-1);
+    if (location.key === "default") {
+      navigate("/");
+    } else {
+      navigate(-1);
+    }
   };
 
   return {

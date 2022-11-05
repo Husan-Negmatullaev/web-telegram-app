@@ -1,12 +1,16 @@
 
-import styles from "./GeoLocation.module.scss";
+import styles from "./ProgressBars.module.scss";
 
-const GeoLocation = ({ countries }) => {
+const ProgressBars = ({ bars }) => {
+
+  if (bars.length === 0) {
+    return <h3 className={styles.mainTitle}>К сожалению информация отсутсвует!</h3>;
+  }
 
   return (
     <div className={styles.location}>
       <div className={styles.location__body}>
-        {countries.map(country => {
+        {bars.map(country => {
           return (
             <div key={country.id} className={styles.location__item}>
               <h2 className={styles.location__title}>
@@ -23,4 +27,4 @@ const GeoLocation = ({ countries }) => {
   )
 }
 
-export default GeoLocation;
+export default ProgressBars;

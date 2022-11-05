@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import clsx from "clsx";
 import SimpleBar from 'simplebar-react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
@@ -10,7 +10,7 @@ import Container from "../../components/common/Container";
 import ChannelInfo from '../../components/ChannelInfo';
 import ChannelPriceActions from '../../components/ChannelPriceActions';
 import GenderCount from '../../components/GenderCount';
-import GeoLocation from '../../components/GeoLocation';
+import ProgressBars from '../../components/ProgressBars';
 import ReviewsSlider from '../../components/ReviewsSlider';
 import AdvertisementSlider from '../../components/AdvertisementSlider';
 import SameChannelSlider from '../../components/SameChannelSlider';
@@ -18,6 +18,7 @@ import { ButtonTelLink } from '../../components/common/Button';
 import SkeletonChannel from './SkeletonChannel';
 
 import { getDigFormat, getDigFromString, isEmpty } from '../../helpers/functions';
+import { useNavigatePage } from '../../helpers/hooks/useNavigatePage';
 import { selectUser } from '../../redux/slices/favorite/selectors';
 
 import axios from "../../services/axios"
@@ -25,7 +26,6 @@ import styles from "./Channel.module.scss";
 import 'simplebar-react/dist/simplebar.min.css';
 
 const Channel = () => {
-  // const dispatch = useDispatch();
   const { userFavourites: { user, list } } = useSelector(selectUser);
   const [isLoading, setIsLoading] = React.useState(false);
   const [isFavorite, setIsFavorite] = React.useState(false);
@@ -33,9 +33,8 @@ const Channel = () => {
   const [sameChannels, setSameChannels] = React.useState([]);
 
   const { channelId } = useParams();
-  const navigate = useNavigate();
+  const { goBack } = useNavigatePage();
 
-  // let isChannelData = isEmpty(channelData);
   const channelImage = "https://aviatatravel.com" + channelData.logo;
 
   React.useEffect(() => {
@@ -50,23 +49,6 @@ const Channel = () => {
       setIsFavorite(findFavorite);
     }
   }, [channelId])
-
-  // React.useEffect(() => {
-  //   fetchChannel(channelId);
-
-  //   window.scrollTo(0, 0);
-
-  //   if (list.length > 0) {
-  //     const findFavorite = list.some(item => {
-  //       return item.channels.find(channel => getDigFromString(channel.url) === Number(channelId));
-  //     })
-  //     setIsFavorite(findFavorite);
-  //   }
-  // }, [channelId])
-
-  const goBack = () => {
-    navigate(-1);
-  };
 
   async function fetchChannel(id) {
     const { data } = await axios.get(`/channels/${id}`);
@@ -202,6 +184,9 @@ const Channel = () => {
                         Гео
                       </Tab>
                       <Tab className={styles.channelSwiperTabs__item} selectedClassName={styles.channelSwiperTabs__item_active}>
+                        Возраст
+                      </Tab>
+                      <Tab className={styles.channelSwiperTabs__item} selectedClassName={styles.channelSwiperTabs__item_active}>
                         Отзывы
                       </Tab>
                       <Tab className={styles.channelSwiperTabs__item} selectedClassName={styles.channelSwiperTabs__item_active}>
@@ -217,7 +202,10 @@ const Channel = () => {
                     <GenderCount woman={channelData.woman} man={channelData.man} />
                   </TabPanel>
                   <TabPanel>
-                    <GeoLocation countries={channelData.countries} />
+                    <ProgressBars bars={channelData.countries} />
+                  </TabPanel>
+                  <TabPanel>
+                    <ProgressBars bars={channelData.ages} />
                   </TabPanel>
                   <TabPanel>
                     <ReviewsSlider reviews={channelData.reviews} />

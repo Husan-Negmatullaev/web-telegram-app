@@ -5,6 +5,16 @@
   @return $result;
 }
 
+.mainTitle {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #A0A3BD;
+  margin: 0 auto rem(30);
+  text-align: center;
+  // display: none;
+}
+
 .location {
   margin-bottom: rem(30);
 
