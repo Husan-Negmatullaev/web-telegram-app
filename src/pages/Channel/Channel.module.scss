@@ -60,6 +60,10 @@
       @media (max-width: 425px) {
         max-width: rem(110);
       }
+
+      @media (max-width: 385px) {
+        font-size: rem(13) !important;
+      }
     }
 
     &__image {

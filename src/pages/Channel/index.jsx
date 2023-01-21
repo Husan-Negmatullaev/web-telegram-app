@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { redirect, useParams } from 'react-router-dom';
 import clsx from "clsx";
 import SimpleBar from 'simplebar-react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
@@ -27,13 +27,14 @@ import 'simplebar-react/dist/simplebar.min.css';
 
 const Channel = () => {
   const { userFavourites: { user, list } } = useSelector(selectUser);
+  const { channelId } = useParams();
+
   const [isLoading, setIsLoading] = React.useState(false);
   const [isFavorite, setIsFavorite] = React.useState(false);
   const [channelData, setChannelData] = React.useState({});
   const [sameChannels, setSameChannels] = React.useState([]);
 
-  const { channelId } = useParams();
-  const { goBack } = useNavigatePage();
+  const { goBack, prevLocation } = useNavigatePage();
 
   const channelImage = "https://aviatatravel.com" + channelData.logo;
 
@@ -50,6 +51,13 @@ const Channel = () => {
     }
   }, [channelId])
 
+  React.useEffect(() => {
+    if (prevLocation !== "/") return;
+
+    sendChannelId(channelId);
+
+  }, [prevLocation, channelId])
+
   async function fetchChannel(id) {
     const { data } = await axios.get(`/channels/${id}`);
 
@@ -58,7 +66,6 @@ const Channel = () => {
   };
 
   async function sendChannelData(user, channelId) {
-    // console.log(user, channelId, "render");
     const bodyFormData = new FormData();
     bodyFormData.append("user_id", user);
     bodyFormData.append("channel_id", channelId);
@@ -93,6 +100,16 @@ const Channel = () => {
       console.log("Cant send data into into", error);
     } finally {
       setIsLoading(false);
+    }
+  }
+
+  async function sendChannelId(channelId) {
+    try {
+      await axios.post("/unique_deeplink/", {
+        channel_id: channelId,
+      });
+    } catch (error) {
+      redirect("/");
     }
   }
 

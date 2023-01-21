@@ -66,16 +66,14 @@ const MainPage = () => {
           <div className={styles.listChannel__body}>
             {
               isSuccess ?
-                channels.map((obj) => {
-                  return (
-                    <Channels
-                      key={obj.id}
-                      title={obj.title}
-                      channels={obj.channels}
-                      id={obj.id}
-                    />
-                  )
-                })
+                channels.map((obj) => (
+                  <Channels
+                    key={obj.id}
+                    title={obj.title}
+                    channels={obj.channels}
+                    id={obj.id}
+                  />
+                ))
                 :
                 [...Array(2)].map((_, index) => <SkeletonChannels key={index} />)
             }
