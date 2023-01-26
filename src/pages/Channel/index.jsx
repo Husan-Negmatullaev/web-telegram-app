@@ -83,7 +83,6 @@ const Channel = () => {
           headers: { "Content-Type": "multipart/form-data" },
         });
 
-        // console.log(user, channelId, "render and delete");
         setIsFavorite(false)
         return;
       }
@@ -95,7 +94,6 @@ const Channel = () => {
         headers: { "Content-Type": "multipart/form-data" },
       });
       setIsFavorite(true)
-      // console.log(user, channelId, "render and add");
     } catch (error) {
       console.log("Cant send data into into", error);
     } finally {

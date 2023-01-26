@@ -1,11 +1,13 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 import clsx from "clsx";
 
 import Title from "../common/Title"
 import styles from "./SameChannelSlider.module.scss";
 import { getDigFormat, getDigFromString } from '../../helpers/functions';
+
+import axios from "../../services/axios"
 
 const SameChannelSlider = ({ sameChannels }) => {
   const navigate = useNavigate();
@@ -20,9 +22,21 @@ const SameChannelSlider = ({ sameChannels }) => {
     )
   }
 
-  console.log(sameChannels);
-  function redurectByChannelId(channelId) {
+  function redirectByChannelId(channelId) {
     navigate("/posts/channel/" + channelId);
+
+    sendChannelId(channelId);
+  }
+
+  async function sendChannelId(channelId) {
+    console.log(channelId);
+    try {
+      await axios.post("/similar_channels/", {
+        channel_id: channelId,
+      });
+    } catch (error) {
+      redirect("/");
+    }
   }
 
   return (
@@ -41,11 +55,11 @@ const SameChannelSlider = ({ sameChannels }) => {
         {sameChannels.map(channel => {
           const imageUrl = "https://aviatatravel.com" + channel.logo;
           const channelId = getDigFromString(channel.url);
-          console.log(channelId);
+          // console.log(channelId);
           return (
             <SwiperSlide key={channel.url} className={styles.sameChannels__slide}>
               <button
-                onClick={() => redurectByChannelId(channelId)}
+                onClick={() => redirectByChannelId(channelId)}
                 type="button"
                 className={styles.sameChannels__item}
               >

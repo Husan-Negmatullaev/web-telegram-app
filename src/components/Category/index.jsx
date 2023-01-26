@@ -21,10 +21,6 @@ const Category = () => {
     dispatch(fetchCategories())
   }, []);
 
-  React.useEffect(() => {
-    // console.log(simpleBarRef.current);
-  }, []);
-
   return (
     <div className={styles.categories}>
       <Container classes={styles.categories__container}>
