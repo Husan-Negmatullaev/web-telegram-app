@@ -13,6 +13,8 @@ import SkeletonChannels from '../../components/Channels/SkeletonChannels';
 
 import styles from "./MainPage.module.scss";
 
+const tg = window.Telegram.WebApp;
+
 const MainPage = () => {
   const dispatch = useDispatch();
   const { channels, status } = useSelector(selectChannels);
@@ -22,7 +24,7 @@ const MainPage = () => {
 
   React.useEffect(() => {
     if (channels.length === 0) {
-      dispatch(fetchChannels());
+      dispatch(fetchChannels(tg.initDataUnsafe?.user?.id || "503118393"));
     }
     window.scrollTo(0, 0);
 

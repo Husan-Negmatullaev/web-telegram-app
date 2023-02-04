@@ -29,7 +29,6 @@ const SameChannelSlider = ({ sameChannels }) => {
   }
 
   async function sendChannelId(channelId) {
-    console.log(channelId);
     try {
       await axios.post("/similar_channels/", {
         channel_id: channelId,

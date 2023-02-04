@@ -6,10 +6,11 @@ import { fetchCategories } from "../../redux/slices/categories/asyncActions";
 
 import Container from '../common/Container';
 import CategoryItem from "../common/CategoryItem";
-import { useHorizontalScroll } from "../../helpers/hooks/useHorizontalScroll";
 
 import 'simplebar-react/dist/simplebar.min.css';
 import styles from "./Category.module.scss"
+
+const tg = window.Telegram.WebApp;
 
 const Category = () => {
   const { categories, categoriesId, status } = useSelector(selectCategories);
@@ -18,7 +19,7 @@ const Category = () => {
   const isSucces = status === "success";
 
   React.useEffect(() => {
-    dispatch(fetchCategories())
+    dispatch(fetchCategories(tg.initDataUnsafe?.user?.id || "503118393"))
   }, []);
 
   return (

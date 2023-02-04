@@ -9,6 +9,8 @@ import Channel from "./pages/Channel";
 import MainLayout from "./layouts/MainLayout";
 import HeaderLayout from "./layouts/HeaderLayout";
 import Post from "./pages/Post";
+
+import axios from "./services/axios"
 import { fetchFavorites } from "./redux/slices/favorite/asyncActions";
 
 import "./styles/index.scss"
@@ -18,10 +20,22 @@ const tg = window.Telegram.WebApp;
 function App() {
   const dispatch = useDispatch();
 
+  const userVerification = async () => {
+    try {
+      await axios.post("/user/verification/", {
+        user_id: tg.initDataUnsafe?.user?.id || "503118393",
+      })
+    } catch (error) {
+      console.log("Cant post user verification");
+    }
+  };
+
   React.useEffect(() => {
     tg.ready();
-    // dispatch(fetchFavorites("503118393"));
-    dispatch(fetchFavorites(tg.initDataUnsafe?.user?.id));
+
+    dispatch(fetchFavorites(tg.initDataUnsafe?.user?.id || "503118393"));
+
+    userVerification();
   }, [])
 
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
-import { redirect, useParams } from 'react-router-dom';
 import clsx from "clsx";
 import SimpleBar from 'simplebar-react';
+import { redirect, useParams } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { useSelector } from 'react-redux/es';
 
@@ -24,6 +24,8 @@ import { selectUser } from '../../redux/slices/favorite/selectors';
 import axios from "../../services/axios"
 import styles from "./Channel.module.scss";
 import 'simplebar-react/dist/simplebar.min.css';
+
+const tg = window.Telegram.WebApp;
 
 const Channel = () => {
   const { userFavourites: { user, list } } = useSelector(selectUser);
@@ -105,6 +107,7 @@ const Channel = () => {
     try {
       await axios.post("/unique_deeplink/", {
         channel_id: channelId,
+        user_id: tg.initDataUnsafe?.user?.id || "503118393",
       });
     } catch (error) {
       redirect("/");

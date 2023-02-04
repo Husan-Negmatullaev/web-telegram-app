@@ -5,8 +5,17 @@ export const fetchChannels = createAsyncThunk(
   "channels/fetchChannels",
   async (params) => {
     try {
-      const { data: { data } } = await axios.get(`/categories/${params ? "?" + params : ""}`);
-      return data;
+      if (typeof params === "number" || typeof params === "string") {
+        const { data: { data } } = await axios.get("/categories/", {
+          params: {
+            user_id: params
+          }
+        });
+        return data;
+      } else {
+        const { data: { data } } = await axios.get("/categories/", params);
+        return data;
+      }
     } catch (error) {
       console.log("Cant fetching categories: " + error.message);
     }
