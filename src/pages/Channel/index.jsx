@@ -61,7 +61,11 @@ const Channel = () => {
   }, [prevLocation, channelId])
 
   async function fetchChannel(id) {
-    const { data } = await axios.get(`/channels/${id}`);
+    const { data } = await axios.get(`/channels/${id}`, {
+      params: {
+        user_id: tg.initDataUnsafe?.user?.id || "503118393",
+      }
+    });
 
     setChannelData(data.data);
     setSameChannels(data.similar_channels);
