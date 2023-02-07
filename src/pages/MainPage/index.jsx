@@ -34,7 +34,12 @@ const MainPage = () => {
 
   React.useEffect(() => {
     if (channels.length > 0 && isFirstRender.current) {
-      dispatch(fetchChannels(categoriesId));
+      const params = {
+        id: tg.initDataUnsafe?.user?.id || "503118393",
+        filters: categoriesId
+      };
+
+      dispatch(fetchChannels(params));
     };
   }, [categoriesId])
 
