@@ -34,6 +34,7 @@ const MainPage = () => {
 
   React.useEffect(() => {
     if (channels.length > 0 && isFirstRender.current) {
+      console.log(tg.initDataUnsafe?.user?.id || "503118393");
       const params = {
         id: tg.initDataUnsafe?.user?.id || "503118393",
         filters: categoriesId
