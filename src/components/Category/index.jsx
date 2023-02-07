@@ -19,7 +19,8 @@ const Category = () => {
   const isSucces = status === "success";
 
   React.useEffect(() => {
-    dispatch(fetchCategories(tg.initDataUnsafe?.user?.id || "503118393"))
+
+    dispatch(fetchCategories(tg.initDataUnsafe?.user?.id || "503118393")) // {user_id: tg.initDataUnsafe?.user?.id}
   }, []);
 
   return (

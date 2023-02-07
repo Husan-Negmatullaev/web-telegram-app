@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+
 import { useSelector, useDispatch } from 'react-redux/es/';
 import { fetchChannels } from '../../redux/slices/channels/asyncActions';
 import { selectChannels } from '../../redux/slices/channels/selectors';
@@ -33,15 +34,7 @@ const MainPage = () => {
 
   React.useEffect(() => {
     if (channels.length > 0 && isFirstRender.current) {
-      const params = new URLSearchParams();
-
-      categoriesId.forEach(category => {
-        if (category) {
-          params.append("filter", category);
-        }
-      });
-
-      dispatch(fetchChannels(params));
+      dispatch(fetchChannels(categoriesId));
     };
   }, [categoriesId])
 

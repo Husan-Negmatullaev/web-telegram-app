@@ -13,7 +13,7 @@ export const fetchChannels = createAsyncThunk(
         });
         return data;
       } else {
-        const { data: { data } } = await axios.get("/categories/", params);
+        const { data: { data } } = await axios.get(`/categories/?${params.map((id) => `${id ? `filter=${id}` : ''}`).join('&')}`);
         return data;
       }
     } catch (error) {
