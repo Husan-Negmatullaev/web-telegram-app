@@ -118,6 +118,20 @@ const Channel = () => {
     }
   }
 
+  const handleButtonClick = async (url) => {
+    const user_id = tg.initDataUnsafe?.user?.id || "503118393";
+    try {
+      await axios.get(`http://64.225.58.67:440/contact/${url}/`, {
+        params: {
+          user_id,
+          channel_id: channelId,
+        }
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   if (isEmpty(channelData)) {
     return <SkeletonChannel />
   }
@@ -171,10 +185,17 @@ const Channel = () => {
             </div>
             <div className={styles.channelProfile__body}>
               <TabList className={styles.channelProfile__tabList}>
-                <Tab className={styles.channelProfile__item} selectedClassName={styles.channelProfile__item_active}>
+                <Tab
+                  className={styles.channelProfile__item}
+                  selectedClassName={styles.channelProfile__item_active}
+                >
                   Информация
                 </Tab>
-                <Tab className={styles.channelProfile__item} selectedClassName={styles.channelProfile__item_active}>
+                <Tab
+                  onClick={() => handleButtonClick("amount")}
+                  className={styles.channelProfile__item}
+                  selectedClassName={styles.channelProfile__item_active}
+                >
                   Стоимость
                 </Tab>
               </TabList>

@@ -9,6 +9,8 @@ import { getDigFormat, getDigFromString } from '../../helpers/functions';
 
 import axios from "../../services/axios"
 
+const tg = window.Telegram.WebApp;
+
 const SameChannelSlider = ({ sameChannels }) => {
   const navigate = useNavigate();
 
@@ -32,6 +34,7 @@ const SameChannelSlider = ({ sameChannels }) => {
     try {
       await axios.post("/similar_channels/", {
         channel_id: channelId,
+        user_id: tg.initDataUnsafe?.user?.id || "503118393"
       });
     } catch (error) {
       redirect("/");
