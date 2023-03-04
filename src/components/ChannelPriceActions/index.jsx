@@ -18,7 +18,7 @@ const ChannelPriceActions = ({ price, contactNetwork, contactSales }) => {
     openTelegramLink(contactNetwork);
 
     try {
-      await axios.get(`http://aviatatravel.com/contact/${url}/`, {
+      await axios.get(`https://aviatatravel.com/contact/${url}/`, {
         params: {
           user_id,
           channel_id: channelId,
