@@ -13,10 +13,8 @@ const ChannelPriceActions = ({ price, contactNetwork, contactSales }) => {
   const { channelId } = useParams();
   const { openTelegramLink } = window.Telegram.WebApp;
 
-  const handleButtonClick = async (url) => {
+  const handleButtonClick = async (url, telegramLink) => {
     const user_id = tg.initDataUnsafe?.user?.id || "503118393";
-    openTelegramLink(contactNetwork);
-
     try {
       await axios.get(`https://aviatatravel.com/contact/${url}/`, {
         params: {
@@ -27,14 +25,16 @@ const ChannelPriceActions = ({ price, contactNetwork, contactSales }) => {
     } catch (error) {
       console.log(error);
     }
+
+    openTelegramLink(telegramLink);
   }
 
   const TelegramLinks = () => {
     return <>
       <ButtonTelLink
-        link={contactNetwork}
+        // link={contactNetwork}
         classes={styles.channelActions__button}
-        onClick={() => handleButtonClick("contact")}
+        onClick={() => handleButtonClick("contact", contactNetwork)}
       >
         <span>Связаться</span>
       </ButtonTelLink>
@@ -61,8 +61,11 @@ const ChannelPriceActions = ({ price, contactNetwork, contactSales }) => {
             isLinks ?
               <TelegramLinks />
               :
-              <ButtonTelLink link={findLink} classes={styles.channelActions__button}>
-                <span>Связаться с менеджмером</span>
+              <ButtonTelLink
+                classes={styles.channelActions__button}
+                onClick={() => handleButtonClick("contact", findLink)}
+              >
+                <span>Связаться с менеджером</span>
               </ButtonTelLink>
           }
         </div>
