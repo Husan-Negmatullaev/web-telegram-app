@@ -32,6 +32,7 @@ function App() {
 
   React.useEffect(() => {
     tg.ready();
+    tg.expand();
 
     dispatch(fetchFavorites(tg.initDataUnsafe?.user?.id || "503118393"));
 
