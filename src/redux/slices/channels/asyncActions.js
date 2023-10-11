@@ -16,7 +16,7 @@ export const fetchChannels = createAsyncThunk(
         const { data: { data } } = await axios.get("/categories/", {
           params: {
             user_id: params.id,
-            filter: params.filters,
+            filter: params.filters.filter(Boolean),
           },
           paramsSerializer: {
             indexes: null,
