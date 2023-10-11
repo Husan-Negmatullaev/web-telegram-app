@@ -13,7 +13,16 @@ export const fetchChannels = createAsyncThunk(
         });
         return data;
       } else {
-        const { data: { data } } = await axios.get(`/categories/?user_id=${params.id}${params.filters.map((id) => `${id ? `filter=${id}` : ''}`).join('&')}`);
+        const { data: { data } } = await axios.get("/categories/", {
+          params: {
+            user_id: params.id,
+            filter: params.filters,
+          },
+          paramsSerializer: {
+            indexes: null,
+          }
+        });
+
         return data;
       }
     } catch (error) {
